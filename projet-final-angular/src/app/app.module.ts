@@ -11,6 +11,10 @@ import { FooterComponent } from './component/footer/footer.component';
 import { EditCommandeComponent } from './component/edit-commande/edit-commande.component';
 import { JeuxSocieteComponent } from './component/jeux-societe/jeux-societe.component';
 import { PanierComponent } from './component/panier/panier.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { routes } from './routes';
 
 @NgModule({
   declarations: [
@@ -23,12 +27,16 @@ import { PanierComponent } from './component/panier/panier.component';
     FooterComponent,
     EditCommandeComponent,
     JeuxSocieteComponent,
-    PanierComponent
+    PanierComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
