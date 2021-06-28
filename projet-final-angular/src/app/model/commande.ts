@@ -1,27 +1,20 @@
 import { Client } from './client';
 import { LigneCommande } from './ligne-commande';
+
 export class Commande {
   constructor(
-    private _numero: number | any = null,
-    private _date: Date = new Date(),
-    private _client: Client = new Client(),
-    private _ligneCommandes: Array<LigneCommande>
+    private _idCommande: number | any = null,
+    private _commande: LigneCommande[],
+    private _client: Client,
+    private _date: Date = new Date()
   ) {}
 
   /**
-   * Getter ligneCommandes
-   * @return {ligneCommande }
+   * Getter idCommande
+   * @return {number }
    */
-  public get ligneCommande(): Array<LigneCommande> {
-    return this._ligneCommandes;
-  }
-
-  /**
-   * Setter ligneCommandes
-   * @param {ligneCommande } value
-   */
-  public set ligneCommandes(value: Array<LigneCommande>) {
-    this._ligneCommandes = value;
+  public get idCommande(): number {
+    return this._idCommande;
   }
 
   /**
@@ -33,35 +26,27 @@ export class Commande {
   }
 
   /**
-   * Setter client
-   * @param {Client } value
-   */
-  public set client(value: Client) {
-    this._client = value;
-  }
-
-  /**
-   * Getter numero
-   * @return {number }
-   */
-  public get numero(): number {
-    return this._numero;
-  }
-
-  /**
-   * Setter numero
-   * @param {number } value
-   */
-  public set numero(value: number) {
-    this._numero = value;
-  }
-
-  /**
    * Getter date
    * @return {Date }
    */
   public get date(): Date {
     return this._date;
+  }
+
+  /**
+   * Setter idCommande
+   * @param {number } value
+   */
+  public set idCommande(value: number) {
+    this._idCommande = value;
+  }
+
+  /**
+   * Setter client
+   * @param {Client } value
+   */
+  public set client(value: Client) {
+    this._client = value;
   }
 
   /**
