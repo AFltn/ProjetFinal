@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import sopraAjc.projetFinal.config.UtilisateurSpring;
-import sopraAjc.projetFinal.entities.Civilite;
 import sopraAjc.projetFinal.entities.Client;
 import sopraAjc.projetFinal.entities.Utilisateur;
 import sopraAjc.projetFinal.exceptions.ClientException;
@@ -66,7 +65,6 @@ public class ClientController {
 
 	public String goEdit(Client client, Model model) {
 		model.addAttribute("client", client);
-		model.addAttribute("civilites", Civilite.values());
 		return "client/edit";
 	}
 

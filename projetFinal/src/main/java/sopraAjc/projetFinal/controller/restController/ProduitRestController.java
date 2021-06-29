@@ -31,7 +31,6 @@ import sopraAjc.projetFinal.entities.Produit;
 import sopraAjc.projetFinal.entities.views.Views;
 import sopraAjc.projetFinal.exceptions.ProduitException;
 import sopraAjc.projetFinal.exceptions.rest.ProduitInvalidException;
-import sopraAjc.projetFinal.services.FournisseurService;
 import sopraAjc.projetFinal.services.ProduitService;
 
 @RestController

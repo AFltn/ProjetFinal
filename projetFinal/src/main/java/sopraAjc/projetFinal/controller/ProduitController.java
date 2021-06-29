@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import sopraAjc.projetFinal.entities.Produit;
-import sopraAjc.projetFinal.services.FournisseurService;
 import sopraAjc.projetFinal.services.ProduitService;
 
 @Controller
@@ -21,8 +20,6 @@ public class ProduitController {
 
 	@Autowired
 	private ProduitService produitService;
-	@Autowired
-	private FournisseurService fournisseurService;
 
 	@GetMapping({ "", "/" })
 	public String home() {
@@ -60,7 +57,6 @@ public class ProduitController {
 
 	public String goEdit(Produit produit, Model model) {
 		model.addAttribute("produit", produit);
-		model.addAttribute("fournisseurs", fournisseurService.getAll());
 		return "produit/edit";
 	}
 
@@ -77,9 +73,6 @@ public class ProduitController {
 			parametre = "create";
 		} else {
 			parametre = "update";
-		}
-		if (produit.getFournisseur() != null && produit.getFournisseur().getId() == null) {
-			produit.setFournisseur(null);
 		}
 
 		try {

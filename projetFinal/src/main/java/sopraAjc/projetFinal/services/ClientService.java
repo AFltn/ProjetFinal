@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import sopraAjc.projetFinal.entities.Client;
 import sopraAjc.projetFinal.entities.Role;
+import sopraAjc.projetFinal.exceptions.ClientException;
+import sopraAjc.projetFinal.repositories.ClientRepository;
+import sopraAjc.projetFinal.repositories.UtilisateurRepository;
 
 @Service
 public class ClientService {

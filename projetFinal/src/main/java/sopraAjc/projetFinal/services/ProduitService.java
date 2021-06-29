@@ -7,32 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sopraAjc.projetFinal.entities.Produit;
+import sopraAjc.projetFinal.exceptions.ProduitException;
+import sopraAjc.projetFinal.repositories.ProduitRepositry;
 
 @Service
 public class ProduitService {
 	@Autowired
 	private ProduitRepositry produitRepository;
-//	@Autowired
-//	private FournisseurService fournisseurService;
 	@Autowired
 	private CommandeService commandeService;
 
-	
-//	remplacer fournisseur par editeur ??
-//	public Produit save(Produit produit) throws ProduitException, FournisseurException {
-//		if (produit.getNom() == null || produit.getNom().isEmpty()) {
-//			throw new ProduitException("données incorrectes:le nom doit etre renseigné");
-//		}
-//		if (produit.getPrix() <= 0) {
-//			throw new ProduitException("données incorrectes:le prix doit etre superieur à 0");
-//		}
-//		if (produit.getFournisseur() != null) {
-//			if (produit.getFournisseur().getId() == null) {
-//				fournisseurService.save(produit.getFournisseur());
-//			}
-//		}
-//		return produitRepository.save(produit);
-//	}
+
+	public Produit save(Produit produit) throws ProduitException{
+		if (produit.getNom() == null || produit.getNom().isEmpty()) {
+			throw new ProduitException("données incorrectes:le nom doit etre renseigné");
+		}
+		if (produit.getPrix() <= 0) {
+			throw new ProduitException("données incorrectes:le prix doit etre superieur à 0");
+		}
+
+		return produitRepository.save(produit);
+	}
 
 	public void delete(Integer id) {
 		if (id != null) {
@@ -47,10 +42,6 @@ public class ProduitService {
 
 		}
 	}
-
-//	public void deleteFournisseurNull() {
-//		produitRepository.deleteProduitSansFournisseur();
-//	}
 
 	public List<Produit> getAll() {
 		return produitRepository.findAll();

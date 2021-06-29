@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import sopraAjc.projetFinal.entities.Client;
 import sopraAjc.projetFinal.entities.Commande;
+import sopraAjc.projetFinal.exceptions.ClientException;
+import sopraAjc.projetFinal.exceptions.CommandeException;
+import sopraAjc.projetFinal.repositories.CommandeRepository;
+import sopraAjc.projetFinal.repositories.LigneCommandeRepository;
 
 @Service
 public class CommandeService {

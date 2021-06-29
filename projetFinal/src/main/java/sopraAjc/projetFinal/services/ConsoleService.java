@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import sopraAjc.projetFinal.entities.Role;
 import sopraAjc.projetFinal.entities.Utilisateur;
+import sopraAjc.projetFinal.repositories.UtilisateurRepository;
 
 @Service
 public class ConsoleService implements CommandLineRunner {

@@ -26,12 +26,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopraAjc.projetFinal.exceptions.ClientException;
-import sopraAjc.projetFinal.exceptions.rest.ClientInvalidException;
-import sopraAjc.projetFinal.services.ClientService;
 import sopraAjc.projetFinal.entities.Client;
 import sopraAjc.projetFinal.entities.Utilisateur;
 import sopraAjc.projetFinal.entities.views.Views;
+import sopraAjc.projetFinal.exceptions.ClientException;
+import sopraAjc.projetFinal.exceptions.rest.ClientInvalidException;
+import sopraAjc.projetFinal.services.ClientService;
 
 @RestController
 @RequestMapping("/api/client")
