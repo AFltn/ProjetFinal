@@ -1,10 +1,14 @@
 package sopraAjc.projetFinal.entities;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -23,8 +27,10 @@ public class JeuSociete extends Produit{
 	@JsonView(Views.Common.class)
 	@Column(name = "genre", length = 100, nullable = false)
 	@NotEmpty(message = "ce champ ne peut pas etre vide !")
-	@OneToMany(mappedBy="jeuSociete")
-	private List <TypeJeuSociete> genre;
+	@ElementCollection(targetClass = TypeJeuSociete.class, fetch = FetchType.EAGER)
+	@CollectionTable
+	@Enumerated(EnumType.STRING)
+	private Set <TypeJeuSociete> genre;
 	
 	@JsonView(Views.Common.class)
 	@Column(name = "duree", length = 100, nullable = false)
@@ -34,21 +40,23 @@ public class JeuSociete extends Produit{
 	@JsonView(Views.Common.class)
 	@Column(name = "support", length = 100, nullable = false)
 	@NotEmpty(message = "ce champ ne peut pas etre vide !")
-	@OneToMany(mappedBy="jeuSociete")
-	private List <SupportJeuSociete> support;
+	@ElementCollection(targetClass = SupportJeuSociete.class, fetch = FetchType.EAGER)
+	@CollectionTable
+	@Enumerated(EnumType.STRING)
+	private Set <SupportJeuSociete> support;
 
 
-	public JeuSociete(List<TypeJeuSociete> genre, String duree, List<SupportJeuSociete> support) {
-		super();
+	public JeuSociete(Set<TypeJeuSociete> genre, String duree, Set<SupportJeuSociete> support) {
+	
 		this.genre = genre;
 		this.duree = duree;
 		this.support = support;
 	}
 	
-	public List<TypeJeuSociete> getGenre() {
+	public Set<TypeJeuSociete> getGenre() {
 		return genre;
 	}
-	public void setGenre(List<TypeJeuSociete> genre) {
+	public void setGenre(Set<TypeJeuSociete> genre) {
 		this.genre = genre;
 	}
 	public String getDuree() {
@@ -57,10 +65,10 @@ public class JeuSociete extends Produit{
 	public void setDuree(String duree) {
 		this.duree = duree;
 	}
-	public List<SupportJeuSociete> getSupport() {
+	public Set<SupportJeuSociete> getSupport() {
 		return support;
 	}
-	public void setSupport(List<SupportJeuSociete> support) {
+	public void setSupport(Set<SupportJeuSociete> support) {
 		this.support = support;
 	}
 

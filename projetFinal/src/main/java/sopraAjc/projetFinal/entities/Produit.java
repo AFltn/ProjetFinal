@@ -23,6 +23,8 @@ import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraAjc.projetFinal.entities.views.Views;
@@ -31,75 +33,84 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name = "produit")
 @SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
-public class Produit {
-	
+
+@JsonTypeInfo(
+		use = JsonTypeInfo.Id.NAME, 
+		include = JsonTypeInfo.As.PROPERTY)
+@JsonSubTypes({ 
+	@JsonSubTypes.Type(value = JeuVideo.class, name = "jeuVideo"), 
+	@JsonSubTypes.Type(value = JeuSociete.class, name = "jeuSociete") 
+})
+public abstract class Produit {
+
 	@JsonView(Views.Common.class)
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProduit")
 	private Integer id;
-	
-	
+
+
 	@JsonView(Views.Common.class)
 	@Column(name = "nom", length = 100, nullable = false)
 	@NotEmpty(message = "le nom ne peut pas etre vide")
 	@Size(min = 2)
 	private String nom;
-	
+
 	@Lob
 	@Column(name = "picture")
 	private byte[] photo;
-	
+
 	@JsonView(Views.Common.class)
 	@Column(name = "editeur", length = 100, nullable = false)
 	@NotEmpty(message = "le nom de l'editeur ne peut pas etre vide")
 	@Size(min = 2)
 	private String editeur;
-	
-	
+
+
 	@JsonView(Views.Common.class)
 	@Column(name = "prix")
 	@Min(value = 1)
 	private double prix;
-	
+
 	@JsonView(Views.Common.class)
 	@Column(name = "date_Sortie")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateSortie;
-	
+
 	@JsonView(Views.Common.class)
 	@Column(name = "age_Minimum")
 	@Min(value = 1)
 	private int ageMin;
-	
+
 	@JsonView(Views.Common.class)
 	@Lob
 	@Type(type = "org.hibernate.type.TextType")
 	@Column(name = "description")
 	private String description;
-	
+
 	@JsonView(Views.Common.class)
 	@Column(name = "nb_Min_Joueurs")
 	@Min(value = 1)
 	private int nbMinJoueurs;
-	
+
 	@JsonView(Views.Common.class)
 	@Column(name = "nb_Max_Joueurs")
 	@Min(value = 1)
 	private int nbMaxJoueurs;
-	
+
 	@JsonView(Views.Common.class)
 	@Column(name = "note_Moyenne")
 	@Min(value = 0)
 	private double noteMoyenne;
+
+	//	@JsonView({ Views.CommandeWithLigneCommande.class, Views.ClientWithCommande.class })
 	
-//	@JsonView({ Views.CommandeWithLigneCommande.class, Views.ClientWithCommande.class })
+	@JsonView(Views.Common.class)
 	@OneToMany(mappedBy = "produit")
 	private List<Avis> avis;
 
-		
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "key.produit")
 	private List<LigneCommande> lignesCommandes = new ArrayList<>();

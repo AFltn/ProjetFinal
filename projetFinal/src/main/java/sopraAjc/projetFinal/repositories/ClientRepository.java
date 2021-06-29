@@ -14,9 +14,5 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 	@Query("select c from Client c left join fetch c.commandes where c.id=:id")
 	Optional<Client> findByIdWithCommandes(@Param("id") Integer id);
 	
-	@Query("select c from Client c left join fetch c.avis where c.id=:id")
-	Optional<Client> findByIdWithAvis(@Param("id") Integer id);
-	
-	@Query("select distinct c from Client c left join fetch c.avis")
-	List<Client> findAllWithAvis();
+
 }

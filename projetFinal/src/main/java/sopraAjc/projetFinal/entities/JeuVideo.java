@@ -1,10 +1,15 @@
 package sopraAjc.projetFinal.entities;
 
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -21,39 +26,43 @@ public class JeuVideo extends Produit{
 	@JsonView(Views.Common.class)
 	@Column(name = "genre", length = 100, nullable = false)
 	@NotEmpty(message = "ce champ ne peut pas etre vide !")
-	@OneToMany(mappedBy="jeuVideo")
-	private List<TypeJeuVideo> genre;
+	@ElementCollection(targetClass = TypeJeuVideo.class, fetch = FetchType.EAGER)
+	@CollectionTable
+	@Enumerated(EnumType.STRING)
+	private Set<TypeJeuVideo> genre;
 
 
 	@JsonView(Views.Common.class)
 	@Column(name = "support", length = 100, nullable = false)
 	@NotEmpty(message = "ce champ ne peut pas etre vide !")
-	@OneToMany(mappedBy="jeuVideo")
-	private List<PlateformeJeuVideo> support;
+	@ElementCollection(targetClass = PlateformeJeuVideo.class, fetch = FetchType.EAGER)
+	@CollectionTable
+	@Enumerated(EnumType.STRING)
+	private Set<PlateformeJeuVideo> support;
 
 
 	public JeuVideo() {
 
 	}
 
-	public JeuVideo(List<TypeJeuVideo> genre, List<PlateformeJeuVideo> support) {
+	public JeuVideo(Set<TypeJeuVideo> genre, Set<PlateformeJeuVideo> support) {
 		this.genre = genre;
 		this.support = support;
 	}
 
-	public List<TypeJeuVideo> getGenre() {
+	public Set<TypeJeuVideo> getGenre() {
 		return genre;
 	}
 
-	public void setGenre(List<TypeJeuVideo> genre) {
+	public void setGenre(Set<TypeJeuVideo> genre) {
 		this.genre = genre;
 	}
 
-	public List<PlateformeJeuVideo> getSupport() {
+	public Set<PlateformeJeuVideo> getSupport() {
 		return support;
 	}
 
-	public void setSupport(List<PlateformeJeuVideo> support) {
+	public void setSupport(Set<PlateformeJeuVideo> support) {
 		this.support = support;
 	}
 

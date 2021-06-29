@@ -29,7 +29,9 @@ public class Avis
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAvis")
 	private Integer id;
 	
+	@JsonView(Views.Common.class)
 	private double note;
+	@JsonView(Views.Common.class)
 	private String commentaire;
 	
 	@ManyToOne

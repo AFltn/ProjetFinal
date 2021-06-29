@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraAjc.projetFinal.entities.JeuVideo;
 import sopraAjc.projetFinal.entities.Produit;
 import sopraAjc.projetFinal.exceptions.ProduitException;
 import sopraAjc.projetFinal.repositories.ProduitRepositry;
@@ -46,6 +47,8 @@ public class ProduitService {
 	public List<Produit> getAll() {
 		return produitRepository.findAll();
 	}
+	
+
 
 	public Produit getById(Integer id) throws ProduitException {
 		if (id != null) {
