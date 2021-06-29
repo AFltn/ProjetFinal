@@ -51,7 +51,7 @@ public class JeuVideoService {
 
 	public JeuVideo getById(Integer id) throws JeuVideoException {
 		if (id != null) {
-			Optional<JeuVideo> opt = JeuVideoRepository.findById(id);
+			Optional<JeuVideo> opt = JeuVideoRepository.findByIdWithAvis(id);
 			if (opt.isPresent()) {
 				return opt.get();
 			}

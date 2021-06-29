@@ -76,7 +76,7 @@ public class JeuVideoRestController {
 		return JeuVideo;
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("{id}")
 	@JsonView(Views.Common.class)
 	public JeuVideo getJeuVideoById(@PathVariable Integer id) {
 		return getById(id);

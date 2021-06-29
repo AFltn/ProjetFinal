@@ -92,12 +92,12 @@ public abstract class Produit {
 	@JsonView(Views.Common.class)
 	@Column(name = "nb_Min_Joueurs")
 	@Min(value = 1)
-	private int nbMinJoueurs;
+	private int nbJoueursMin;
 
 	@JsonView(Views.Common.class)
 	@Column(name = "nb_Max_Joueurs")
 	@Min(value = 1)
-	private int nbMaxJoueurs;
+	private int nbJoueursMax;
 
 	@JsonView(Views.Common.class)
 	@Column(name = "note_Moyenne")
@@ -157,20 +157,30 @@ public abstract class Produit {
 		this.description = description;
 	}
 
-	public int getNbMinJoueurs() {
-		return nbMinJoueurs;
+
+
+	public byte[] getPhoto() {
+		return photo;
 	}
 
-	public void setNbMinJoueurs(int nbMinJoueurs) {
-		this.nbMinJoueurs = nbMinJoueurs;
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
 	}
 
-	public int getNbMaxJoueurs() {
-		return nbMaxJoueurs;
+	public int getNbJoueursMin() {
+		return nbJoueursMin;
 	}
 
-	public void setNbMaxJoueurs(int nbMaxJoueurs) {
-		this.nbMaxJoueurs = nbMaxJoueurs;
+	public void setNbJoueursMin(int nbJoueursMin) {
+		this.nbJoueursMin = nbJoueursMin;
+	}
+
+	public int getNbJoueursMax() {
+		return nbJoueursMax;
+	}
+
+	public void setNbJoueursMax(int nbJoueursMax) {
+		this.nbJoueursMax = nbJoueursMax;
 	}
 
 	public double getNoteMoyenne() {
