@@ -1,1 +1,33 @@
-<p>panier works!</p>
+<h2>Votre Panier :</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Produit</th>
+      <th>Prix/u</th>
+      <th>Quantité</th>
+      <th>Prix total</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let p of jeuVideo">
+      <td>{{ p.nom }}</td>
+      <td>{{ p.prix }}</td>
+      <td>Quantité</td>
+      <td>Prix tot</td>
+    </tr>
+  </tbody>
+</table>
+
+<button [routerLink]="['/home']" routerLinkActive="active">
+  vider le panier
+</button>
+
+<button [routerLink]="['/home']" routerLinkActive="active">
+  Valider votre commande
+</button>
+
+<button [routerLink]="['/home']" routerLinkActive="active">
+  annuler la commande
+</button>
