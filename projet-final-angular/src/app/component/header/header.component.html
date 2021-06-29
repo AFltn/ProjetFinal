@@ -49,8 +49,23 @@
           <a class="nav-link" href="#">Link</a>
         </li>
 
-        <li class="nav-item"><a class="nav-link" href="#">Sign in</a></li>
-        <li class="nav-item"><a class="nav-link" href="#"> Register</a></li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/login']"
+            routerLinkActive="active"
+            >Se connecter</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/edit-client']"
+            routerLinkActive="active"
+          >
+            Créer un compte</a
+          >
+        </li>
       </ul>
     </div>
 

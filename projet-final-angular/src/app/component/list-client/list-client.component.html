@@ -1,0 +1,46 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>id:</th>
+      <th>civilite</th>
+      <th>prenom</th>
+      <th>nom</th>
+      <th>contact</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of client | async">
+      <td>{{ c.id }}</td>
+      <td>{{ c.prenom }}</td>
+      <td>{{ c.nom }}</td>
+      <td>{{ c.mail }}</td>
+      <td>{{ c.tel }}</td>
+      <td>{{ c.adresse }}</td>
+      <td>{{ c.dateNaissance }}</td>
+      <td>{{ c.avis }}</td>
+      <td>{{ c.commandes }}</td>
+
+      <td>
+        <a
+          class="btn btn-outline-primary"
+          [routerLink]="['/client', 'edit', c.id]"
+          routerLinkActive="active"
+          >Modifier</a
+        >
+      </td>
+      <td>
+        <button (click)="delete(c.id)" class="btn btn-outline-danger">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a
+  class="btn btn-link"
+  [routerLink]="['/client', 'edit']"
+  routerLinkActive="active"
+  >Ajouter un client</a
+>
