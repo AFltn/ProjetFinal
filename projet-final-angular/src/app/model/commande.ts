@@ -10,6 +10,14 @@ export class Commande {
   ) {}
 
   /**
+   * Getter commande
+   * @return {LigneCommande[] }
+   */
+  public get commande(): LigneCommande[] {
+    return this._commande;
+  }
+
+  /**
    * Getter idCommande
    * @return {number }
    */
@@ -31,6 +39,14 @@ export class Commande {
    */
   public get date(): Date {
     return this._date;
+  }
+
+  /**
+   * Setter commande
+   * @param {LigneCommande[] } value
+   */
+  public set commande(value: LigneCommande[]) {
+    this._commande = value;
   }
 
   /**
