@@ -6,15 +6,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -28,9 +25,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
-//import formation.sopra.springBoot.entities.LigneCommande;
-//import formation.sopra.springBoot.entities.views.Views;
-//import formation.sopra.springBoot.validations.MultipleDix;
+import sopraAjc.projetFinal.entities.views.Views;
+
 
 
 
@@ -100,8 +96,10 @@ public class Produit {
 	@Min(value = 0)
 	private double noteMoyenne;
 	
+
+	
 //	@JsonView({ Views.CommandeWithLigneCommande.class, Views.ClientWithCommande.class })
-	@OneToMany(mappedBy = "key.avis")
+	@OneToMany(mappedBy = "produit")
 	private List<Avis> avis;
 
 		
@@ -214,6 +212,15 @@ public class Produit {
 
 	public void setLignesCommandes(List<LigneCommande> lignesCommandes) {
 		this.lignesCommandes = lignesCommandes;
+	}
+	
+	public void calculerMoyenne(List<Avis> avis) {
+		int cpt = 0;
+		for (Avis n : avis) {
+			cpt +=1;
+			noteMoyenne+=n.getNote();
+		}
+		setNoteMoyenne(noteMoyenne/cpt);
 	}
 
 	@Override

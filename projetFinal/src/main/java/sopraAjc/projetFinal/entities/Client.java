@@ -3,8 +3,6 @@ package sopraAjc.projetFinal.entities;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -23,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import formation.sopra.springBoot.entities.views.Views;
+import sopraAjc.projetFinal.entities.views.Views;
 
 @Entity
 @Table(name = "Client")
@@ -78,13 +76,7 @@ public class Client {
 
 	}
 
-	public Client(String prenom, String nom, String commentaire) {
-		super(prenom, nom, commentaire);
-	}
 
-	public Client(String prenom, String nom) {
-		super(prenom, nom);
-	}
 
 	public List<Commande> getCommandes() {
 		return commandes;

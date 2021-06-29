@@ -7,7 +7,10 @@ import javax.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sun.istack.NotNull;
 
-//import formation.sopra.springBoot.entities.views.Views;
+import sopraAjc.projetFinal.entities.views.Views;
+
+
+
 
 @Embeddable
 public class Adresse {

@@ -13,9 +13,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
+import sopraAjc.projetFinal.entities.views.Views;
 
 //import formation.sopra.springBoot.entities.views.Views;
 
