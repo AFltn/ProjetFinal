@@ -3,6 +3,7 @@ import { TypeJeuxSociete } from './../enum/type-jeux-societe';
 import { EditAvisComponent } from './../component/edit-avis/edit-avis.component';
 export class JeuxSociete {
   constructor(
+    private _id: number = 0,
     private _nom: string = '',
     private _editeur: string = '',
     private _prix: number = 0,
@@ -18,14 +19,13 @@ export class JeuxSociete {
     private _support: SupportJeuxSociete[]
   ) {}
 
-  /*private calculerMoyenne() {
-    var i: number = 0;
-    for (var a in this._avis) {
-      i++;
-      this._noteMoyenne += a.note;
-    }
-    this._noteMoyenne /= i;
-  }*/
+  /**
+   * Getter id
+   * @return {number }
+   */
+  public get id(): number {
+    return this._id;
+  }
 
   /**
    * Getter nom
@@ -105,6 +105,14 @@ export class JeuxSociete {
    */
   public get duree(): string {
     return this._duree;
+  }
+
+  /**
+   * Setter id
+   * @param {number } value
+   */
+  public set id(value: number) {
+    this._id = value;
   }
 
   /**

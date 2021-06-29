@@ -3,6 +3,7 @@ import { TypeJeuxVideo } from './../enum/type-jeux-video';
 import { EditAvisComponent } from './../component/edit-avis/edit-avis.component';
 export class JeuxVideo {
   constructor(
+    private _id: number = 0,
     private _nom: string = '',
     private _editeur: string = '',
     private _prix: number = 0,
@@ -17,14 +18,13 @@ export class JeuxVideo {
     private _support: PlateformeJeuxVideo[]
   ) {}
 
-  /* private calculerMoyenne() {
-    var i: number = 0;
-    for (var a in this._avis) {
-      i++;
-      this._noteMoyenne += a.note;
-    }
-    this._noteMoyenne /= i;
-  } */
+  /**
+   * Getter id
+   * @return {number }
+   */
+  public get id(): number {
+    return this._id;
+  }
 
   /**
    * Getter nom
@@ -96,6 +96,14 @@ export class JeuxVideo {
    */
   public get noteMoyenne(): number {
     return this._noteMoyenne;
+  }
+
+  /**
+   * Setter id
+   * @param {number } value
+   */
+  public set id(value: number) {
+    this._id = value;
   }
 
   /**
