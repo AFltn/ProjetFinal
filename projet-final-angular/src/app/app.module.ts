@@ -16,6 +16,9 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { routes } from './routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './component/login/login.component';
+import { ProfilClientComponent } from './component/profil-client/profil-client.component';
+import { ListClientComponent } from './component/list-client/list-client.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditCommandeComponent,
     JeuxSocieteComponent,
     PanierComponent,
+    LoginComponent,
+    ProfilClientComponent,
+    ListClientComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,181 @@
-<p>edit-client works!</p>
+<h4 align="center">Création de votre compte client :</h4>
+
+<form (ngSubmit)="submit()" [formGroup]="form">
+  <div class="form-outline mb-4">
+    <input
+      type="email"
+      name="mail"
+      id="mail"
+      class="form-control"
+      [formControl]="mailCtrl"
+      placeholder="Saisir votre email :"
+    />
+  </div>
+  <div></div>
+
+  <div class="form-outline mb-4">
+    <input
+      type="text"
+      id="prenom"
+      name="prenom"
+      class="form-control"
+      [formControl]="prenomCtrl"
+      placeholder="Saisir votre prénom :"
+    />
+    <div
+      *ngIf="prenomCtrl.dirty && prenomCtrl.invalid"
+      class="alert alert-danger"
+    >
+      <span *ngIf="prenomCtrl.hasError('required')">Prénom obligatoire ! </span>
+    </div>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input
+      type="text"
+      id="nom"
+      class="form-control"
+      [formControl]="nomCtrl"
+      placeholder="Saisir votre nom :"
+    />
+    <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
+      <span *ngIf="nomCtrl.hasError('required')">Nom obligatoire ! </span>
+      <span *ngIf="nomCtrl.hasError('minlength')">Minimum 2 caractères !</span>
+    </div>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input
+      type="text"
+      id="tel"
+      class="form-control"
+      [formControl]="telCtrl"
+      placeholder="Saisir votre numéro de téléphone :"
+    />
+    <div *ngIf="telCtrl.dirty && telCtrl.invalid" class="alert alert-danger">
+      <span *ngIf="telCtrl.hasError('required')">Téléphone obligatoire ! </span>
+    </div>
+  </div>
+
+  <h6>Saisir votre adresse :</h6>
+
+  <div class="form-outline mb-4">
+    <input
+      type="text"
+      id="numero"
+      name="numero"
+      class="form-control"
+      [formControl]="numeroCtrl"
+      placeholder="Saisir votre numéro de rue : "
+    />
+    <div
+      *ngIf="numeroCtrl.dirty && numeroCtrl.invalid"
+      class="alert alert-danger"
+    >
+      <span *ngIf="numeroCtrl.hasError('required')"
+        >Numéro de rue obligatoire !
+      </span>
+    </div>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input
+      type="text"
+      id="nomRue"
+      name="nomRue"
+      class="form-control"
+      [formControl]="rueCtrl"
+      placeholder="Saisir votre nom de rue : "
+    />
+    <div *ngIf="rueCtrl.dirty && rueCtrl.invalid" class="alert alert-danger">
+      <span *ngIf="rueCtrl.hasError('required')"
+        >Nom de rue obligatoire !
+      </span>
+    </div>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input
+      type="text"
+      id="cP"
+      name="cP"
+      class="form-control"
+      [formControl]="codePostalCtrl"
+      placeholder="Saisir votre code postale :"
+    />
+    <div
+      *ngIf="codePostalCtrl.dirty && codePostalCtrl.invalid"
+      class="alert alert-danger"
+    >
+      <span *ngIf="codePostalCtrl.hasError('required')"
+        >Code postale obligatoire !
+      </span>
+    </div>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input
+      type="text"
+      id="ville"
+      name="ville"
+      class="form-control"
+      [formControl]="villeCtrl"
+      placeholder="Saisir votre ville :"
+    />
+    <div
+      *ngIf="villeCtrl.dirty && villeCtrl.invalid"
+      class="alert alert-danger"
+    >
+      <span *ngIf="villeCtrl.hasError('required')">Ville obligatoire ! </span>
+    </div>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input
+      type="login"
+      name="login"
+      class="form-control"
+      [formControl]="loginCtrl"
+      placeholder="Saisir votre login : "
+    />
+    <div
+      *ngIf="loginCtrl.dirty && loginCtrl.invalid"
+      class="alert alert-danger"
+    >
+      Login obligatoire !
+    </div>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input
+      type="password"
+      name="password"
+      class="form-control"
+      [formControl]="passwordCtrl"
+      placeholder="Saisir votre mot de passe :"
+    />
+    <div
+      *ngIf="passwordCtrl.dirty && passwordCtrl.invalid"
+      class="alert alert-danger"
+    >
+      8 caracteres minimums!
+    </div>
+  </div>
+  <div class="form-outline mb-4">
+    <input
+      type="password"
+      name="confirm"
+      class="form-control"
+      [formControl]="confirmCtrl"
+      placeholder="Veuillez confirmer votre mot de passe : "
+    />
+    <div *ngIf="passwordGroup.invalid" class="alert alert-danger">
+      Vous avez saisis deux mots de passe différents
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+      Enregister
+    </button>
+  </div>
+</form>
