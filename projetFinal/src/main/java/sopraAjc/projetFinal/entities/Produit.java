@@ -29,7 +29,6 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 
 
-
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "produit")
@@ -95,8 +94,6 @@ public class Produit {
 	@Column(name = "note_Moyenne")
 	@Min(value = 0)
 	private double noteMoyenne;
-	
-
 	
 //	@JsonView({ Views.CommandeWithLigneCommande.class, Views.ClientWithCommande.class })
 	@OneToMany(mappedBy = "produit")
@@ -212,15 +209,6 @@ public class Produit {
 
 	public void setLignesCommandes(List<LigneCommande> lignesCommandes) {
 		this.lignesCommandes = lignesCommandes;
-	}
-	
-	public void calculerMoyenne(List<Avis> avis) {
-		int cpt = 0;
-		for (Avis n : avis) {
-			cpt +=1;
-			noteMoyenne+=n.getNote();
-		}
-		setNoteMoyenne(noteMoyenne/cpt);
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -57,6 +58,16 @@ public class Client {
 	@Column(name = "nom", length = 150)
 	@Size(min = 2, max = 150)
 	private String nom;
+	
+	@JsonView(Views.Common.class)
+	@Column(name = "email", length = 150)
+	@Size(min = 2, max = 150)
+	private String email;
+	
+	@JsonView(Views.Common.class)
+	@Column(name = "telephone")
+	@Min(value = 10)
+	private int telephone;
 
 	@JsonView(Views.Common.class)
 	@Column(name = "date_de_Naissance")
