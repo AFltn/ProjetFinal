@@ -18,14 +18,14 @@ export class JeuxSociete {
     private _support: SupportJeuxSociete[]
   ) {}
 
-  private calculerMoyenne() {
+  /*private calculerMoyenne() {
     var i: number = 0;
     for (var a in this._avis) {
       i++;
       this._noteMoyenne += a.note;
     }
     this._noteMoyenne /= i;
-  }
+  }*/
 
   /**
    * Getter nom
