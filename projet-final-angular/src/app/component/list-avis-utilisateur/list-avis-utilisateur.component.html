@@ -1,1 +1,40 @@
-<p>list-avis-utilisateur works!</p>
+<h3>Vos avis :</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>id:</th>
+
+      <th>Jeu</th>
+      <th>note</th>
+      <th>commentaire</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of client | async">
+      <td>{{ a.jeu }}</td>
+      <td>{{ a.note }}</td>
+      <td>{{ a.commentaire }}</td>
+
+      <td>
+        <a
+          class="btn btn-outline-primary"
+          [routerLink]="['/avis', 'edit', a.id]"
+          routerLinkActive="active"
+          >Modifier</a
+        >
+      </td>
+      <td>
+        <button (click)="delete(a.id)" class="btn btn-outline-danger">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a
+  class="btn btn-link"
+  [routerLink]="['/avis', 'edit']"
+  routerLinkActive="active"
+  >Ajouter un avis</a
+>

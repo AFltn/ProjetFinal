@@ -36,8 +36,8 @@ export class PanierComponent implements OnInit {
     private commandeService: CommandeService,
     private fb: FormBuilder
   ) {
-    this.paiementCtrl = fb.control('', Validators.required);
-    this.livraisonCtrl = fb.control('', Validators.required);
+    this.paiementCtrl = fb.control(null, Validators.required);
+    this.livraisonCtrl = fb.control(null, Validators.required);
 
     this.form = fb.group({
       paiement: this.paiementCtrl,

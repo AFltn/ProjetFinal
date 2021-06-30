@@ -3,10 +3,9 @@
   <header class="bg-dark py-4">
     <div class="container px-4 px-lg-4 my-4">
       <div class="text-center text-white">
-        <h1 class="display-4 fw-bolder">Shop in style</h1>
-        <p class="lead fw-normal text-white-50 mb-0">
-          With this shop hompeage template
-        </p>
+        <h5 class="display-6 fw-bolder">
+          Classement des meilleurs jeux de la semaine
+        </h5>
       </div>
     </div>
   </header>
@@ -34,15 +33,19 @@
               <div class="text-center">
                 <!-- Product name-->
                 <h5 class="fw-bolder">Fancy Product</h5>
-                <!-- Product price-->
+                <!-- Note moyenne produit-->
                 $40.00 - $80.00
               </div>
             </div>
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="#"
-                  >View options</a
+                <!-- pointer vers l'id dans le router-->
+                <a
+                  class="btn btn-outline-dark mt-auto"
+                  [routerLink]="['/jeuxvideo']"
+                  routerLinkActive="active"
+                  >Voir plus</a
                 >
               </div>
             </div>
@@ -55,7 +58,7 @@
               class="badge bg-dark text-white position-absolute"
               style="top: 0.5rem; right: 0.5rem"
             >
-              Sale
+              New
             </div>
             <!-- Product image-->
             <img
@@ -100,7 +103,7 @@
               class="badge bg-dark text-white position-absolute"
               style="top: 0.5rem; right: 0.5rem"
             >
-              Sale
+              New
             </div>
             <!-- Product image-->
             <img

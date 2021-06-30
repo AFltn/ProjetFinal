@@ -41,6 +41,13 @@ export class ClientService {
     });
   }
 
+  public getWithAvis(id: number): Observable<Client> {
+    this.initHeader();
+    return this.http.get<Client>(ClientService.URL + '/' + id, {
+      headers: this.httpHeader,
+    });
+  }
+
   public create(client: Client): Observable<Client> {
     this.initHeader();
     const clientFormate = {
