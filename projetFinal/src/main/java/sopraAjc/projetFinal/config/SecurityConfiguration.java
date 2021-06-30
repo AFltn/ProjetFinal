@@ -29,41 +29,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
-//		http
-//			.antMatcher("/api/**")
-//				.csrf().ignoringAntMatchers("/api","/api/**")
-//				.and()
-//				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//				.and()
-//				.authorizeRequests()
-//					.antMatchers(HttpMethod.OPTIONS).anonymous()
-//					.antMatchers(HttpMethod.POST,"/api/commande").hasRole("USER")
-//					.antMatchers("/api/commande","/api/commande/**").authenticated()
+//		 @formatter:off
+		http
+			.antMatcher("/api/**")
+				.csrf().ignoringAntMatchers("/api","/api/**")
+				.and()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+				.authorizeRequests()
+					.antMatchers(HttpMethod.OPTIONS).anonymous()
+					.antMatchers(HttpMethod.POST,"/api/jeuxSociete").anonymous()
 //					.antMatchers(HttpMethod.POST,"/api/client").anonymous()
-//					.antMatchers(HttpMethod.POST,"/api/produit").hasRole("ADMIN")
-//					.antMatchers(HttpMethod.PUT,"/api/produit/**").hasRole("ADMIN")
-//					.antMatchers(HttpMethod.DELETE,"/api/produit/**").hasRole("ADMIN")
 //					.antMatchers("/api","/api/**").authenticated()
-//				.and()
-//				.httpBasic()
-//			.and()		
-//			.antMatcher("/**")
-//				.authorizeRequests()
-//					.antMatchers("/","/commande/**","/client/inscription","/client/save").permitAll()
-//					.antMatchers("/client/histo","/client/histo/details").authenticated()
-//					.antMatchers("/produit","/produit/**","/client","/client/**").hasAnyRole("ADMIN")
-//					.anyRequest().authenticated()
-//				.and()
-//				.formLogin()
-//					.loginPage("/login")
-//					.defaultSuccessUrl("/")
-//					.failureUrl("/login?error")
-//					.permitAll()
-//				.and()	
-//				.logout()
-//					.logoutUrl("/logout")
-//					.logoutSuccessUrl("/?logout");
+				.and()
+				.httpBasic();
 //		// @formatter:on
 
 	}

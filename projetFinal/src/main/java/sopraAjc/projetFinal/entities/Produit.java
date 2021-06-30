@@ -2,6 +2,7 @@ package sopraAjc.projetFinal.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -38,7 +39,8 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 @JsonTypeInfo(
 		use = JsonTypeInfo.Id.NAME, 
-		include = JsonTypeInfo.As.PROPERTY)
+		include = JsonTypeInfo.As.PROPERTY,
+		property = "type")
 @JsonSubTypes({ 
 	@JsonSubTypes.Type(value = JeuVideo.class, name = "jeuVideo"), 
 	@JsonSubTypes.Type(value = JeuSociete.class, name = "jeuSociete") 
@@ -271,7 +273,10 @@ public abstract class Produit {
 
 	@Override
 	public String toString() {
-		return "Produit [id=" + id + ", nom=" + nom + ", prix=" + prix + "]";
+		return "Produit [id=" + id + ", nom=" + nom + ", photo=" + Arrays.toString(photo) + ", editeur=" + editeur
+				+ ", prix=" + prix + ", dateSortie=" + dateSortie + ", ageMin=" + ageMin + ", description="
+				+ description + ", nbJoueursMin=" + nbJoueursMin + ", nbJoueursMax=" + nbJoueursMax + ", noteMoyenne="
+				+ noteMoyenne + ", avis=" + avis + ", lignesCommandes=" + lignesCommandes + "]";
 	}
 
 }

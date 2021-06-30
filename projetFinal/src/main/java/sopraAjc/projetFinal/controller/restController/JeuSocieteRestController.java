@@ -64,6 +64,7 @@ public class JeuSocieteRestController {
 	@PostMapping("")
 //	@JsonView(Views.JeuSocieteWithFournisseur.class)
 	public JeuSociete create(@Valid @RequestBody JeuSociete JeuSociete, BindingResult br) {
+		System.out.println("js :" + br);
 		if (br.hasErrors()) {
 			throw new JeuSocieteInvalidException();
 		}
