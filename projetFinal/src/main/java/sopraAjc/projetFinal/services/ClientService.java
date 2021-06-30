@@ -64,18 +64,17 @@ public class ClientService {
 	
 	
 	public Utilisateur getAvisByIdUser(Integer id) {
-		if (id != null) {
+				if (id != null) {
 			Optional<Utilisateur> opt = utilisateurRepository.findByIdWithAvis(id);
-			if (opt.isPresent()) {
+						if (opt.isPresent()) {
 				return opt.get();
 			}
 		}
 		return new Utilisateur();
 	}
-	
-	
+
 	public Client getById(Integer id) {
-		if (id != null) {
+				if (id != null) {
 			Optional<Client> opt = clientRepository.findById(id);
 			if (opt.isPresent()) {
 				return opt.get();
