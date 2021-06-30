@@ -13,7 +13,7 @@ import { SupportJeuxSociete } from 'src/app/enum/support-jeux-societe';
   styleUrls: ['./jeux-societe.component.css'],
 })
 export class JeuxSocieteComponent implements OnInit {
-  js1: JeuxSociete = new JeuxSociete(
+  /* js1: JeuxSociete = new JeuxSociete(
     111,
     'Dobble',
     'Asmodee',
@@ -28,7 +28,7 @@ export class JeuxSocieteComponent implements OnInit {
     [TypeJeuxSociete.Adresse],
     '10 min',
     [SupportJeuxSociete.Cartes]
-  );
+  ); */
 
   constructor(
     private jeuxSocieteService: JeuxSocieteService,

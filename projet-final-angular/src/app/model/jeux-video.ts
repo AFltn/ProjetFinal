@@ -1,3 +1,4 @@
+import { Avis } from './avis';
 import { PlateformeJeuxVideo } from './../enum/plateforme-jeux-video';
 import { TypeJeuxVideo } from './../enum/type-jeux-video';
 import { EditAvisComponent } from './../component/edit-avis/edit-avis.component';
@@ -13,58 +14,10 @@ export class JeuxVideo {
     private _ageMin: number = 0,
     private _description: string = '',
     private _noteMoyenne: number = 0,
-    private _avis: EditAvisComponent[] = [],
+    private _avis: Avis,
     private _genre: TypeJeuxVideo[] = [],
     private _support: PlateformeJeuxVideo[] = []
   ) {}
-
-  /**
-   * Getter avis
-   * @return {EditAvisComponent[] }
-   */
-  public get avis(): EditAvisComponent[] {
-    return this._avis;
-  }
-
-  /**
-   * Setter avis
-   * @param {EditAvisComponent[] } value
-   */
-  public set avis(value: EditAvisComponent[]) {
-    this._avis = value;
-  }
-
-  /**
-   * Getter genre
-   * @return {TypeJeuxVideo[] }
-   */
-  public get genre(): TypeJeuxVideo[] {
-    return this._genre;
-  }
-
-  /**
-   * Setter genre
-   * @param {TypeJeuxVideo[] } value
-   */
-  public set genre(value: TypeJeuxVideo[]) {
-    this._genre = value;
-  }
-
-  /**
-   * Getter support
-   * @return {PlateformeJeuxVideo[] }
-   */
-  public get support(): PlateformeJeuxVideo[] {
-    return this._support;
-  }
-
-  /**
-   * Setter support
-   * @param {PlateformeJeuxVideo[] } value
-   */
-  public set support(value: PlateformeJeuxVideo[]) {
-    this._support = value;
-  }
 
   /**
    * Getter id
@@ -99,7 +52,23 @@ export class JeuxVideo {
   }
 
   /**
-   * Getter datesortie
+   * Getter nbJoueursMax
+   * @return {number }
+   */
+  public get nbJoueursMax(): number {
+    return this._nbJoueursMax;
+  }
+
+  /**
+   * Getter nbJoueursMin
+   * @return {number }
+   */
+  public get nbJoueursMin(): number {
+    return this._nbJoueursMin;
+  }
+
+  /**
+   * Getter dateSortie
    * @return {Date }
    */
   public get dateSortie(): Date {
@@ -123,22 +92,6 @@ export class JeuxVideo {
   }
 
   /**
-   * Getter nbJoueursMin
-   * @return {number }
-   */
-  public get nbJoueursMin(): number {
-    return this._nbJoueursMin;
-  }
-
-  /**
-   * Getter nbJoueursMax
-   * @return {number }
-   */
-  public get nbJoueursMax(): number {
-    return this._nbJoueursMax;
-  }
-
-  /**
    * Getter noteMoyenne
    * @return {number }
    */
@@ -147,27 +100,27 @@ export class JeuxVideo {
   }
 
   /**
-   * Setter genre
-   * @param {TypeJeuxVideo[] } value
+   * Getter avis
+   * @return {Avis }
    */
-  public set genre(value: TypeJeuxVideo[]) {
-    this._genre = value;
+  public get avis(): Avis {
+    return this._avis;
   }
 
   /**
-   * Setter support
-   * @param {PlateformeJeuxVideo[] } value
+   * Getter genre
+   * @return {TypeJeuxVideo[] }
    */
-  public set support(value: PlateformeJeuxVideo[]) {
-    this._support = value;
+  public get genre(): TypeJeuxVideo[] {
+    return this._genre;
   }
 
   /**
-   * Setter avis
-   * @param {EditAvisComponent[] } value
+   * Getter support
+   * @return {PlateformeJeuxVideo[] }
    */
-  public set avis(value: EditAvisComponent[]) {
-    this._avis = value;
+  public get support(): PlateformeJeuxVideo[] {
+    return this._support;
   }
 
   /**
@@ -203,7 +156,23 @@ export class JeuxVideo {
   }
 
   /**
-   * Setter datesortie
+   * Setter nbJoueursMax
+   * @param {number } value
+   */
+  public set nbJoueursMax(value: number) {
+    this._nbJoueursMax = value;
+  }
+
+  /**
+   * Setter nbJoueursMin
+   * @param {number } value
+   */
+  public set nbJoueursMin(value: number) {
+    this._nbJoueursMin = value;
+  }
+
+  /**
+   * Setter dateSortie
    * @param {Date } value
    */
   public set dateSortie(value: Date) {
@@ -227,26 +196,34 @@ export class JeuxVideo {
   }
 
   /**
-   * Setter nbJoueursMin
-   * @param {number } value
-   */
-  public set nbJoueursMin(value: number) {
-    this._nbJoueursMin = value;
-  }
-
-  /**
-   * Setter nbJoueursMax
-   * @param {number } value
-   */
-  public set nbJoueursMax(value: number) {
-    this._nbJoueursMax = value;
-  }
-
-  /**
    * Setter noteMoyenne
    * @param {number } value
    */
   public set noteMoyenne(value: number) {
     this._noteMoyenne = value;
+  }
+
+  /**
+   * Setter avis
+   * @param {Avis } value
+   */
+  public set avis(value: Avis) {
+    this._avis = value;
+  }
+
+  /**
+   * Setter genre
+   * @param {TypeJeuxVideo[] } value
+   */
+  public set genre(value: TypeJeuxVideo[]) {
+    this._genre = value;
+  }
+
+  /**
+   * Setter support
+   * @param {PlateformeJeuxVideo[] } value
+   */
+  public set support(value: PlateformeJeuxVideo[]) {
+    this._support = value;
   }
 }

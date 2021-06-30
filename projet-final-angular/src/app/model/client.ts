@@ -1,6 +1,7 @@
 import { EditAvisComponent } from './../component/edit-avis/edit-avis.component';
 import { Commande } from './commande';
 import { Adresse } from './adresse';
+import { Avis } from './avis';
 export class Client {
   constructor(
     private _id: number | any = null,
@@ -10,9 +11,25 @@ export class Client {
     private _dateNaissance: Date = new Date(),
     private _mail: string = '',
     private _tel: string = '',
-    private _commandes: Commande[],
-    private _avis: EditAvisComponent[]
+    private _commandes: Commande[] = [],
+    private _avis: Avis
   ) {}
+
+  /**
+   * Getter commandes
+   * @return {Commande[] }
+   */
+  public get commandes(): Commande[] {
+    return this._commandes;
+  }
+
+  /**
+   * Setter commandes
+   * @param {Commande[] } value
+   */
+  public set commandes(value: Commande[]) {
+    this._commandes = value;
+  }
 
   /**
    * Getter mail

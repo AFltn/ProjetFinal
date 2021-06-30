@@ -1,3 +1,5 @@
+import { MatSelectModule } from '@angular/material/select';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -53,6 +55,7 @@ import { JeuVideoDetailComponent } from './component/jeu-video-detail/jeu-video-
     HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

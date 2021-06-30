@@ -1,3 +1,4 @@
+import { ElementCommande } from './../model/element-commande';
 import { LigneCommande } from './../model/ligne-commande';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -42,11 +43,12 @@ export class CommandeService {
     });
   }
 
-  public create(commande: Commande): Observable<Commande> {
+  public create(commande: ElementCommande): Observable<Commande> {
     this.initHeader();
     const commandeFormate = {
       client: commande.client,
-      LigneCommande: commande.commande,
+      produit: commande.produit,
+      quantite: commande.quantite,
       date: commande.date,
     };
 
