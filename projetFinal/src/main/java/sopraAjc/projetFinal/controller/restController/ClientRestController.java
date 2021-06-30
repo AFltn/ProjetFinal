@@ -67,8 +67,8 @@ public class ClientRestController {
 
 	@GetMapping("/{id}/avis")
 	@JsonView(Views.ClientWithAvis.class)
-	public Utilisateur getAvisByIdUser(Integer id) {
-		return findByIdWithAvis(id);
+	public Utilisateur getAvisByIdUser(@PathVariable Integer id) {
+				return findByIdWithAvis(id);
 	}
 	
 	private Utilisateur findByIdWithAvis(Integer id) {
@@ -78,7 +78,7 @@ public class ClientRestController {
 
 	@GetMapping("/{id}/commande")
 	@JsonView(Views.ClientWithCommande.class)
-	public Client getClientWithCommandeById(Integer id) {
+	public Client getClientWithCommandeById(@PathVariable Integer id) {
 		return getById(id);
 	}
 

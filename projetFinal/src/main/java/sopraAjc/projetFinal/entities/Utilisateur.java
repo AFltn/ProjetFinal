@@ -23,7 +23,9 @@ import sopraAjc.projetFinal.entities.views.Views;
 @Entity
 @SequenceGenerator(name = "seqUtilisateur", sequenceName = "seq_utilisateur", initialValue = 100, allocationSize = 1)
 public class Utilisateur {
+	
 	@Id
+	@JsonView(Views.Common.class)
 	@GeneratedValue(generator = "seqUtilisateur", strategy = GenerationType.SEQUENCE)
 	private Integer id;
 	
