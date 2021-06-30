@@ -24,4 +24,18 @@ public class Views {
 	public static class CommandeWithLigneCommande extends Commande {
 
 	}
+	
+	public static class Utilisateur extends Common {
+
+	}
+	
+	public static class ClientWithAvis extends Utilisateur {
+
+	}	
+	
+	public static class ProduitWithAvis extends Common {
+
+	}
+	
+
 }

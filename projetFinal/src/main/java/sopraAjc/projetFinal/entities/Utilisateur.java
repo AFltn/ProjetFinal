@@ -44,7 +44,7 @@ public class Utilisateur {
 	@Column(name = "role", length = 50)
 	private Role role;
 	
-	@JsonView(Views.ClientWithCommande.class)
+	@JsonView(Views.ClientWithAvis.class)
 	@OneToMany(mappedBy = "utilisateur")
 	private List<Avis> avis;
 	

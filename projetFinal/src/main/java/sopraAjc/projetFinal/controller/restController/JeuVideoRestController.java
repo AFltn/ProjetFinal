@@ -46,7 +46,7 @@ public class JeuVideoRestController {
 //	private FournisseurService fournisseurService;
 
 	@GetMapping("")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.ProduitWithAvis.class)
 	public List<JeuVideo> getAllJeuVideo() {
 		return getAll();
 	}
