@@ -1,3 +1,4 @@
+import { EditJeuxVideoComponent } from './component/edit-jeux-video/edit-jeux-video.component';
 import { HomeJeuSocieteComponent } from './home-jeu-societe/home-jeu-societe.component';
 import { HomeJeuVideoComponent } from './home-jeu-video/home-jeu-video.component';
 import { PanierComponent } from './component/panier/panier.component';
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'jeux-societe', component: JeuxSocieteComponent },
   { path: 'edit-jeux-societe', component: EditJeuxSocieteComponent },
+  { path: 'edit-jeux-video', component: EditJeuxVideoComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'edit-client', component: EditClientComponent },
   { path: 'login', component: LoginComponent },

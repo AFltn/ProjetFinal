@@ -1,6 +1,5 @@
 <h1>Formulaire d'édition du jeu de societe</h1>
 <form (ngSubmit)="submit()" [formGroup]="form">
-  <!--NOM-->-->
   <div class="form-group">
     <label>nom</label>
     <input class="form-control" [formControl]="nomCtrl" />
@@ -9,7 +8,6 @@
       <span *ngIf="nomCtrl.hasError('minlength')">minimum 2 caracteres</span>
     </div>
   </div>
-  <!--EDITEUR-->-->
   <div class="form-group">
     <label>editeur</label>
     <input class="form-control" [formControl]="editeurCtrl" />
@@ -23,7 +21,6 @@
       >
     </div>
   </div>
-  <!--PRIX-->-->
   <div class="form-group">
     <label>prix</label>
     <input class="form-control" [formControl]="prixCtrl" />
@@ -31,12 +28,18 @@
       <span *ngIf="prixCtrl.hasError('required')">prix obligatoire</span>
     </div>
   </div>
-  <!--DATE DE SORTIE-->-->
   <div class="form-group">
-    <label for="datesortie">date de sortie</label>
-    <input type="date" id="datesortie" />
+    <label>date de sortie</label>
+    <input
+      type="date"
+      id="datesortie"
+      class="form-control"
+      [formControl]="ageCtrl"
+    />
+    <div *ngIf="prixCtrl.dirty && prixCtrl.invalid" class="alert alert-danger">
+      <span *ngIf="prixCtrl.hasError('required')">prix obligatoire</span>
+    </div>
   </div>
-  <!--AGE MIN-->-->
   <div class="form-group">
     <label>age minimum</label>
     <input class="form-control" [formControl]="ageCtrl" />
@@ -45,7 +48,6 @@
       <span *ngIf="ageCtrl.hasError('min')">doit être positif ou nul</span>
     </div>
   </div>
-  <!--NOMBRE JOUEURS MIN-->-->
   <div class="form-group">
     <label>nombre de joueurs minimum</label>
     <input class="form-control" [formControl]="nbJMinCtrl" />
@@ -59,7 +61,6 @@
       <span *ngIf="nbJMinCtrl.hasError('min')">doit être d'au moins 1</span>
     </div>
   </div>
-  <!--NOMBRE JOUEURS MAX-->-->
   <div class="form-group">
     <label>nombre de joueurs maximum</label>
     <input class="form-control" [formControl]="nbJMaxCtrl" />
@@ -73,7 +74,6 @@
       <span *ngIf="nbJMaxCtrl.hasError('min')">doit être d'au moins 1</span>
     </div>
   </div>
-  <!--DUREE PARTIE-->-->
   <div class="form-group">
     <label>durée d'une partie</label>
     <input class="form-control" [formControl]="dureeCtrl" />
@@ -85,43 +85,79 @@
       <span *ngIf="dureeCtrl.hasError('min')">doit être positif</span>
     </div>
   </div>
-  <!--GENRES-->-->
   <div class="form-group">
-    <input type="checkbox" />
-    <legend>Genre.s de jeu</legend>
-    <option nom="genre[]" valeur="adresse">adresse</option>
-    <option nom="genre[]" valeur="memoire">memoire</option>
-    <option nom="genre[]" valeur="connaissance">connaissance</option>
-    <option nom="genre[]" valeur="lettres">lettres</option>
-    <option nom="genre[]" valeur="ambiance">ambiance</option>
-    <option nom="genre[]" valeur="enquete">enquete</option>
-    <option nom="genre[]" valeur="cooperation">cooperation</option>
-    <option nom="genre[]" valeur="gestion">gestion</option>
-    <option nom="genre[]" valeur="deck-building">deck-building</option>
-    <option nom="genre[]" valeur="bluff">bluff</option>
-    <option nom="genre[]" valeur="reflexion">reflexion</option>
-  </div>
-  <!--SUPPORTS-->-->
-  <div class="form-group">
-    <input type="checkbox" />
-    <legend>Support.s de jeu</legend>
-    <option nom="support[]" valeur="cartes">cartes</option>
-    <option nom="support[]" valeur="plateau">plateau</option>
-    <option nom="support[]" valeur="des">dés</option>
-    <option nom="support[]" valeur="livre">livre</option>
-  </div>
-  <!--DESCRIPTION-->-->
-  <div class="form-group">
-    <label>description</label>
-    <input class="form-control" [formControl]="descriptionCtrl" />
+    <label
+      >Genre.s de jeu : (maintenir la touche 'CTRL' pour selectionner plusieurs
+      options)</label
+    >
+    <select
+      name="genre"
+      multiple
+      size="11"
+      class="form-control"
+      [formControl]="genreCtrl"
+    >
+      <option value="0">adresse</option>
+      <option value="1">memoire</option>
+      <option value="2">connaissance</option>
+      <option value="3">lettres</option>
+      <option value="4">ambiance</option>
+      <option value="5">enquetes</option>
+      <option value="6">cooperation</option>
+      <option value="7">gestion</option>
+      <option value="8">bluff</option>
+      <option value="9">reflexion</option>
+      <option value="10">deck-building</option>
+    </select>
     <div
-      *ngIf="descriptionCtrl.dirty && descriptionCtrl.invalid"
+      *ngIf="genreCtrl.dirty && genreCtrl.invalid"
       class="alert alert-danger"
     >
-      <span *ngIf="descriptionCtrl.hasError('required')">nom obligatoire</span>
-      <span *ngIf="descriptionCtrl.hasError('minlength')"
-        >minimum 10 caracteres</span
+      <span *ngIf="genreCtrl.hasError('required')"
+        >veuillez selectionner au moins un genre</span
       >
+    </div>
+
+    <div class="form-group">
+      <label
+        >Support.s du jeu : (maintenir la touche 'CTRL' pour selectionner
+        plusieurs options)</label
+      >
+      <select
+        name="support"
+        multiple
+        size="4"
+        class="form-control"
+        [formControl]="supportCtrl"
+      >
+        <option value="0">cartes</option>
+        <option value="1">plateau</option>
+        <option value="2">dés</option>
+        <option value="3">livre</option>
+      </select>
+      <div
+        *ngIf="supportCtrl.dirty && supportCtrl.invalid"
+        class="alert alert-danger"
+      >
+        <span *ngIf="supportCtrl.hasError('required')"
+          >veuillez selectionner au moins un support</span
+        >
+      </div>
+      <div class="form-group">
+        <label>description</label>
+        <input class="form-control" [formControl]="descriptionCtrl" />
+        <div
+          *ngIf="descriptionCtrl.dirty && descriptionCtrl.invalid"
+          class="alert alert-danger"
+        >
+          <span *ngIf="descriptionCtrl.hasError('required')"
+            >support obligatoire</span
+          >
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary" type="submit">Enregister</button>
+      </div>
     </div>
   </div>
 </form>

@@ -9,5 +9,5 @@ export enum TypeJeuxSociete {
   gestion,
   bluff,
   relfexion,
-  deck = 'Deck Building',
+  deckBuilding,
 }

@@ -17,12 +17,12 @@ export class EditJeuxVideoComponent implements OnInit {
   nomCtrl: FormControl;
   editeurCtrl: FormControl;
   prixCtrl: FormControl;
-  datesortie: Date = new Date();
+  dateCtrl: FormControl;
   ageCtrl: FormControl;
   nbJMinCtrl: FormControl;
   nbJMaxCtrl: FormControl;
-  genre: TypeJeuxVideo[] = [];
-  support: PlateformeJeuxVideo[] = [];
+  genreCtrl: FormControl;
+  supportCtrl: FormControl;
   descriptionCtrl: FormControl;
   form: FormGroup;
 
@@ -36,6 +36,7 @@ export class EditJeuxVideoComponent implements OnInit {
       Validators.minLength(2),
     ]);
     this.prixCtrl = fb.control(0, [Validators.required]);
+    this.dateCtrl = fb.control(null, [Validators.required]);
     this.ageCtrl = fb.control(0, [Validators.required, Validators.min(0)]);
     this.nbJMinCtrl = fb.control(0, [Validators.required, Validators.min(1)]);
     this.nbJMaxCtrl = fb.control(0, [Validators.required, Validators.min(1)]);
@@ -43,6 +44,8 @@ export class EditJeuxVideoComponent implements OnInit {
       Validators.required,
       Validators.minLength(10),
     ]);
+    this.genreCtrl = fb.control(null, [Validators.required]);
+    this.supportCtrl = fb.control(null, [Validators.required]);
     this.form = fb.group({
       nom: this.nomCtrl,
       editeur: this.editeurCtrl,
@@ -51,11 +54,25 @@ export class EditJeuxVideoComponent implements OnInit {
       nbJoueursMin: this.nbJMinCtrl,
       nbJoueursMax: this.nbJMaxCtrl,
       description: this.descriptionCtrl,
+
+      date: this.dateCtrl,
     });
   }
 
   submit() {
     console.log(this.form);
+
+    let genre: TypeJeuxVideo[] = [];
+    for (let i = 0; i < this.genreCtrl.value.length; i++) {
+      genre[i] = (<any>TypeJeuxVideo)[this.genreCtrl.value[i]];
+    }
+    let support: PlateformeJeuxVideo[] = [];
+    for (let i = 0; i < this.supportCtrl.value.length; i++) {
+      support[i] = (<any>PlateformeJeuxVideo)[this.supportCtrl.value[i]];
+    }
+
+    console.log(genre);
+    console.log(support);
   }
   ngOnInit(): void {}
 }
