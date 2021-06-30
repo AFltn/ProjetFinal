@@ -19,6 +19,30 @@ export class JeuxVideo {
   ) {}
 
   /**
+   * Getter genre
+   * @return {TypeJeuxVideo }
+   */
+  public get genre(): TypeJeuxVideo[] {
+    return this._genre;
+  }
+
+  /**
+   * Getter support
+   * @return {PlateformeJeuxVideo }
+   */
+  public get support(): PlateformeJeuxVideo[] {
+    return this._support;
+  }
+
+  /**
+   * Getter avis
+   * @return {EditAvisComponent }
+   */
+  public get avis(): EditAvisComponent[] {
+    return this._avis;
+  }
+
+  /**
    * Getter id
    * @return {number }
    */
@@ -96,6 +120,30 @@ export class JeuxVideo {
    */
   public get noteMoyenne(): number {
     return this._noteMoyenne;
+  }
+
+  /**
+   * Setter genre
+   * @param {TypeJeuxVideo[] } value
+   */
+  public set genre(value: TypeJeuxVideo[]) {
+    this._genre = value;
+  }
+
+  /**
+   * Setter support
+   * @param {PlateformeJeuxVideo[] } value
+   */
+  public set support(value: PlateformeJeuxVideo[]) {
+    this._support = value;
+  }
+
+  /**
+   * Setter avis
+   * @param {EditAvisComponent[] } value
+   */
+  public set avis(value: EditAvisComponent[]) {
+    this._avis = value;
   }
 
   /**

@@ -1,1 +1,31 @@
-<p>jeux-video works!</p>
+<h1>{{ jv1.nom }}</h1>
+<h2>par {{ jv1.editeur }}</h2>
+<h3>Fiche technique :</h3>
+<div>
+  <p>référence : {{ jv1.id }}</p>
+  <p>nom : {{ jv1.nom }}</p>
+  <p>editeur : {{ jv1.editeur }}</p>
+  <p>note : {{ jv1.noteMoyenne }}</p>
+  <p>prix : {{ jv1.prix }}</p>
+  <p>date de sortie : {{ jv1.datesortie }}</p>
+  <p>age minimum : {{ jv1.ageMin }}</p>
+  <p>nombre de joueurs : {{ jv1.nbJoueursMin }} à {{ jv1.nbJoueursMax }}</p>
+  <p>genre : {{ jv1.genre }}</p>
+  <p>support : {{ jv1.support }}</p>
+  <h3>Description</h3>
+  <p>{{ jv1.description }}</p>
+  <h3>Avis</h3>
+  <!--table class="table">
+    <tr>
+      <th>note:</th>
+      <th>commentaire:</th>
+      <th>auteur:</th>
+    </tr>
+    <tr *ngFor="let a of jv1.avis | async">
+      <td>{{ a.note }}</td>
+      <td>{{ a.commentaire }}</td>
+      <td>{{ a.utilisateur.login }}</td>
+    </tr>
+  </!--table>
+</div-->
+</div>

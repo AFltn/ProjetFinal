@@ -20,6 +20,30 @@ export class JeuxSociete {
   ) {}
 
   /**
+   * Getter genre
+   * @return {TypeJeuxSociete }
+   */
+  public get genre(): TypeJeuxSociete[] {
+    return this._genre;
+  }
+
+  /**
+   * Getter support
+   * @return {SupportJeuxSociete }
+   */
+  public get support(): SupportJeuxSociete[] {
+    return this._support;
+  }
+
+  /**
+   * Getter avis
+   * @return {EditAvisComponent }
+   */
+  public get avis(): EditAvisComponent[] {
+    return this._avis;
+  }
+
+  /**
    * Getter id
    * @return {number }
    */
@@ -105,6 +129,30 @@ export class JeuxSociete {
    */
   public get duree(): string {
     return this._duree;
+  }
+
+  /**
+   * Setter genre
+   * @param {TypeJeuxSociete[] } value
+   */
+  public set genre(value: TypeJeuxSociete[]) {
+    this._genre = value;
+  }
+
+  /**
+   * Setter support
+   * @param {SupportJeuxSociete[] } value
+   */
+  public set support(value: SupportJeuxSociete[]) {
+    this._support = value;
+  }
+
+  /**
+   * Setter avis
+   * @param {EditAvisComponent[] } value
+   */
+  public set avis(value: EditAvisComponent[]) {
+    this._avis = value;
   }
 
   /**

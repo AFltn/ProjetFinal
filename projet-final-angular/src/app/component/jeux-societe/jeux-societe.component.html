@@ -1,1 +1,32 @@
-<p>jeux-societe works!</p>
+<h1>{{ js1.nom }}</h1>
+<h2>par {{ js1.editeur }}</h2>
+<h3>Fiche technique :</h3>
+<div>
+  <p>référence : {{ js1.id }}</p>
+  <p>nom : {{ js1.nom }}</p>
+  <p>editeur : {{ js1.editeur }}</p>
+  <p>note : {{ js1.noteMoyenne }}</p>
+  <p>prix : {{ js1.prix }}</p>
+  <p>date de sortie : {{ js1.datesortie }}</p>
+  <p>age minimum : {{ js1.ageMin }}</p>
+  <p>nombre de joueurs : {{ js1.nbJoueursMin }} à {{ js1.nbJoueursMax }}</p>
+  <p>durée : {{ js1.duree }}</p>
+  <p>genre : {{ js1.genre }}</p>
+  <p>support : {{ js1.support }}</p>
+  <h3>Description</h3>
+  <p>{{ js1.description }}</p>
+  <h3>Avis</h3>
+  <!--table class="table">
+    <tr>
+      <th>note:</th>
+      <th>commentaire:</th>
+      <th>auteur:</th>
+    </tr>
+    <tr *ngFor="let a of js1.avis | async">
+      <td>{{ a.note }}</td>
+      <td>{{ a.commentaire }}</td>
+      <td>{{ a.utilisateur.login }}</td>
+    </tr>
+  </!--table>
+</div-->
+</div>

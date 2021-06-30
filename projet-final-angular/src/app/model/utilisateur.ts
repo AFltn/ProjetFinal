@@ -6,7 +6,7 @@ export class Utilisateur {
     private _login: string = '',
     private _password: string = '',
     private _role: Role = Role.ROLE_ADMIN,
-    private _client: Client = new Client()
+    private _client: Client
   ) {}
 
   /**

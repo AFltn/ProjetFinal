@@ -16,6 +16,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { routes } from './routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditJeuxSocieteComponent } from './component/edit-jeux-societe/edit-jeux-societe.component';
+import { EditJeuxVideoComponent } from './component/edit-jeux-video/edit-jeux-video.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditCommandeComponent,
     JeuxSocieteComponent,
     PanierComponent,
+    EditJeuxSocieteComponent,
+    EditJeuxVideoComponent,
   ],
   imports: [
     BrowserModule,
