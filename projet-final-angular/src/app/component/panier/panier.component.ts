@@ -24,12 +24,15 @@ export class PanierComponent implements OnInit {
   jeuVideo: Observable<JeuxVideo> | any = null;
   elemCommande: Observable<ElementCommande> | any = null;
 
+  visa: Paiement = Paiement.Visa;
+  masterCard: Paiement = Paiement.MasterCard;
+  paypal: Paiement = Paiement.Paypal;
+
   paiementCtrl: FormControl;
   livraisonCtrl: FormControl;
   form: FormGroup;
 
   constructor(
-    private http: HttpClient,
     private commandeService: CommandeService,
     private fb: FormBuilder
   ) {
@@ -52,5 +55,11 @@ export class PanierComponent implements OnInit {
 
   myFunc() {
     window.alert('Commande valider');
+  }
+
+  delete(id: number) {
+    this.commandeService.delete(id).subscribe((result) => {
+      this.initPanier();
+    });
   }
 }

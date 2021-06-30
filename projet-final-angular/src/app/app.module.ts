@@ -26,6 +26,7 @@ import { ListClientComponent } from './component/list-client/list-client.compone
 import { HomeJeuVideoComponent } from './home-jeu-video/home-jeu-video.component';
 import { HomeJeuSocieteComponent } from './home-jeu-societe/home-jeu-societe.component';
 import { JeuVideoDetailComponent } from './component/jeu-video-detail/jeu-video-detail.component';
+import { ListAvisUtilisateurComponent } from './component/list-avis-utilisateur/list-avis-utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { JeuVideoDetailComponent } from './component/jeu-video-detail/jeu-video-
     HomeJeuVideoComponent,
     HomeJeuSocieteComponent,
     JeuVideoDetailComponent,
+    ListAvisUtilisateurComponent,
   ],
   imports: [
     BrowserModule,

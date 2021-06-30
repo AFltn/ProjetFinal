@@ -16,6 +16,11 @@
       <td>{{ p.prix }}</td>
       <td>{{ p.quantite }}</td>
       <td>{{ p.prix * p.quantite }}</td>
+      <td>
+        <button (click)="delete(p.id)" class="btn btn-outline-danger">
+          supprimer
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -23,22 +28,34 @@
 <h4>Moyen de Paiment :</h4>
 <form [formGroup]="form">
   <select class="form-control" [formControl]="paiementCtrl">
-    <option value="Visa">Visa</option>
-    <option value="MasterCard">MasterCard</option>
-    <option value="Paypal">Paypal</option>
+    <option value="">--Chosir un mode de paiement--</option>
+    <option value="0">Visa</option>
+    <option value="1">MasterCard</option>
+    <option value="2">Paypal</option>
   </select>
 </form>
 <h4>Mode de livraison :</h4>
 
-<button [routerLink]="['/home']" routerLinkActive="active">
-  vider le panier
-</button>
+<form [formGroup]="form">
+  <select class="form-control" [formControl]="livraisonCtrl">
+    <option value="">--Chosir un mode de livraison--</option>
+    <option value="0">Standard (4.9 €)</option>
+    <option value="1">Express (9.9 €)</option>
+    <option value="2">1 jour (15.9 €)</option>
+    <option value="3">Point relais (2.9 €)</option>
+  </select>
+</form>
+<hr />
 
-<button [routerLink]="['/home']" routerLinkActive="active" (click)="myFunc()">
-  Valider votre commande
-</button>
+<div>
+  <h3>Montant total de la commande :€</h3>
+</div>
 
-<button [routerLink]="['/home']" routerLinkActive="active">
-  annuler la commande
-</button>
+<div>
+  <button [routerLink]="['/home']" routerLinkActive="active" (click)="myFunc()">
+    Valider votre commande
+  </button>
+
+  <button [routerLink]="['/home']" routerLinkActive="active">Annuler</button>
+</div>
 <hr />
