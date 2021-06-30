@@ -8,10 +8,27 @@ export class Client {
     private _prenom: string = '',
     private _adresse: Adresse = new Adresse(),
     private _dateNaissance: Date = new Date(),
+    private _mail: string = '',
     private _tel: string = '',
     private _commandes: Commande[],
     private _avis: EditAvisComponent[]
   ) {}
+
+  /**
+   * Getter mail
+   * @return {string }
+   */
+  public get mail(): string {
+    return this._mail;
+  }
+
+  /**
+   * Setter mail
+   * @param {string } value
+   */
+  public set mail(value: string) {
+    this._mail = value;
+  }
 
   /**
    * Getter tel

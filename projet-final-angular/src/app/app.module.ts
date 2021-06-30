@@ -18,6 +18,11 @@ import { routes } from './routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditJeuxSocieteComponent } from './component/edit-jeux-societe/edit-jeux-societe.component';
 import { EditJeuxVideoComponent } from './component/edit-jeux-video/edit-jeux-video.component';
+import { LoginComponent } from './component/login/login.component';
+import { ProfilClientComponent } from './component/profil-client/profil-client.component';
+import { ListClientComponent } from './component/list-client/list-client.component';
+import { HomeJeuVideoComponent } from './home-jeu-video/home-jeu-video.component';
+import { HomeJeuSocieteComponent } from './home-jeu-societe/home-jeu-societe.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,11 @@ import { EditJeuxVideoComponent } from './component/edit-jeux-video/edit-jeux-vi
     PanierComponent,
     EditJeuxSocieteComponent,
     EditJeuxVideoComponent,
+    LoginComponent,
+    ProfilClientComponent,
+    ListClientComponent,
+    HomeJeuVideoComponent,
+    HomeJeuSocieteComponent,
   ],
   imports: [
     BrowserModule,
