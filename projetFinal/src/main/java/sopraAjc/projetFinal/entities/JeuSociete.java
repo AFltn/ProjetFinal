@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -21,7 +20,7 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 @Entity
 @Table(name = "JeuSociete")
-@SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
+//@SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
 public class JeuSociete extends Produit{
 
 	@JsonView(Views.Common.class)

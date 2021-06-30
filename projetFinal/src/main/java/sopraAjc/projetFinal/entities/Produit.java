@@ -32,7 +32,8 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name="produit")
+@Inheritance(strategy = InheritanceType.JOINED)
 @SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
 
 @JsonTypeInfo(
@@ -117,6 +118,16 @@ public abstract class Produit {
 
 	public Produit() {
 
+	}
+	
+	//Fct angular
+	public void calculerNoteMoyenne(double noteMoyenne) {
+		double cpt = 0;
+		for( Avis a : avis) {
+			cpt++;
+			noteMoyenne+=a.getNote();
+		}
+		setNoteMoyenne(noteMoyenne/cpt);
 	}
 
 	public Produit(String nom, double prix) {

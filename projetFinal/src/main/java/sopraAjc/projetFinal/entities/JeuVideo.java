@@ -1,6 +1,5 @@
 package sopraAjc.projetFinal.entities;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
@@ -10,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -20,12 +18,12 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 @Entity
 @Table(name = "JeuVideo")
-@SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
+//@SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
 public class JeuVideo extends Produit{
 
 	@JsonView(Views.Common.class)
 	@Column(name = "genre", length = 100, nullable = false)
-	@NotEmpty(message = "ce champ ne peut pas etre vide !")
+//	@NotEmpty(message = "ce champ ne peut pas etre vide !")
 	@ElementCollection(targetClass = TypeJeuVideo.class, fetch = FetchType.EAGER)
 	@CollectionTable
 	@Enumerated(EnumType.STRING)
@@ -37,7 +35,7 @@ public class JeuVideo extends Produit{
 	@NotEmpty(message = "ce champ ne peut pas etre vide !")
 	@ElementCollection(targetClass = PlateformeJeuVideo.class, fetch = FetchType.EAGER)
 	@CollectionTable
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING) 
 	private Set<PlateformeJeuVideo> support;
 
 

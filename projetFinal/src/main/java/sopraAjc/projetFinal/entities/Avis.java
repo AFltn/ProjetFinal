@@ -23,7 +23,7 @@ import sopraAjc.projetFinal.entities.views.Views;
 public class Avis 
 {
 	
-	@JsonView(Views.Common.class)
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAvis")
@@ -36,6 +36,7 @@ public class Avis
 	
 	@ManyToOne
 	@JoinColumn(name = "id_utilisateur", foreignKey = @ForeignKey(name = "avis_id_user_fk"))
+	@JsonView(Views.Common.class)
 	private Utilisateur utilisateur;
 	
 	@ManyToOne
