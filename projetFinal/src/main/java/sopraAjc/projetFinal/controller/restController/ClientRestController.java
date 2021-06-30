@@ -65,12 +65,34 @@ public class ClientRestController {
 		return getById(id);
 	}
 
+	@GetMapping("/{id}/avis")
+	@JsonView(Views.ClientWithAvis.class)
+	public Utilisateur getAvisByIdUser(Integer id) {
+		return findByIdWithAvis(id);
+	}
+	
+	private Utilisateur findByIdWithAvis(Integer id) {
+		Utilisateur user = clientService.getAvisByIdUser(id);
+		return user;
+	}
+
 	@GetMapping("/{id}/commande")
 	@JsonView(Views.ClientWithCommande.class)
 	public Client getClientWithCommandeById(Integer id) {
 		return getById(id);
 	}
 
+	@GetMapping("/avis")
+	@JsonView(Views.ClientWithAvis.class)
+	public List<Utilisateur> getAllAvisWithUser(Integer id) {
+		return getAllAvis();
+	}
+
+	private List<Utilisateur> getAllAvis() {
+		List<Utilisateur> user = clientService.getAllAvis();
+		return user;
+	}
+	
 	private Client getById(Integer id) {
 		Client client = clientService.getById(id);
 		if (client.getId() == null) {

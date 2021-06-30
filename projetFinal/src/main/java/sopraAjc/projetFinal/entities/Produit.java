@@ -32,7 +32,7 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 @SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
 
 @JsonTypeInfo(
@@ -51,6 +51,7 @@ public abstract class Produit {
 	private Integer id;
 
 
+	
 	@JsonView(Views.Common.class)
 	@Column(name = "nom", length = 100, nullable = false)
 	@NotEmpty(message = "le nom ne peut pas etre vide")
@@ -106,7 +107,7 @@ public abstract class Produit {
 
 	//	@JsonView({ Views.CommandeWithLigneCommande.class, Views.ClientWithCommande.class })
 	
-	@JsonView(Views.Common.class)
+	@JsonView(Views.ProduitWithAvis.class)
 	@OneToMany(mappedBy = "produit")
 	private List<Avis> avis;
 

@@ -31,13 +31,16 @@ public class Avis
 	
 	@JsonView(Views.Common.class)
 	private double note;
+	
 	@JsonView(Views.Common.class)
 	private String commentaire;
 	
+	@JsonView(Views.ProduitWithAvis.class)
 	@ManyToOne
 	@JoinColumn(name = "id_utilisateur", foreignKey = @ForeignKey(name = "avis_id_user_fk"))
 	private Utilisateur utilisateur;
 	
+	@JsonView(Views.ClientWithAvis.class)
 	@ManyToOne
 	@JoinColumn(name = "id_produit", foreignKey = @ForeignKey(name = "avis_id_produit_fk") )
 	private Produit produit;
