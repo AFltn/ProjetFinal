@@ -23,7 +23,7 @@ import sopraAjc.projetFinal.entities.views.Views;
 public class Avis 
 {
 	
-	@JsonView(Views.Common.class)
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAvis")
