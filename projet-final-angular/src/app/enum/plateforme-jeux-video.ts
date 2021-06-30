@@ -3,6 +3,6 @@ export enum PlateformeJeuxVideo {
   PS5,
   PC,
   SWITCH,
-  XBOXONE = 'Xbox One',
-  XBOXSERIES = 'Xbox Series',
+  XBOXONE,
+  XBOXSERIES,
 }

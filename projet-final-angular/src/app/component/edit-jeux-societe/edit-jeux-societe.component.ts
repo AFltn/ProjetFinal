@@ -17,13 +17,13 @@ export class EditJeuxSocieteComponent implements OnInit {
   nomCtrl: FormControl;
   editeurCtrl: FormControl;
   prixCtrl: FormControl;
-  datesortie: Date = new Date();
+  dateCtrl: FormControl;
   ageCtrl: FormControl;
   nbJMinCtrl: FormControl;
   nbJMaxCtrl: FormControl;
   dureeCtrl: FormControl;
-  genre: TypeJeuxSociete[] = [];
-  support: SupportJeuxSociete[] = [];
+  genreCtrl: FormControl;
+  supportCtrl: FormControl;
   descriptionCtrl: FormControl;
   form: FormGroup;
 
@@ -37,6 +37,7 @@ export class EditJeuxSocieteComponent implements OnInit {
       Validators.minLength(2),
     ]);
     this.prixCtrl = fb.control(0, [Validators.required]);
+    this.dateCtrl = fb.control(null, [Validators.required]);
     this.ageCtrl = fb.control(0, [Validators.required, Validators.min(0)]);
     this.nbJMinCtrl = fb.control(0, [Validators.required, Validators.min(1)]);
     this.nbJMaxCtrl = fb.control(0, [Validators.required, Validators.min(1)]);
@@ -45,6 +46,8 @@ export class EditJeuxSocieteComponent implements OnInit {
       Validators.required,
       Validators.minLength(10),
     ]);
+    this.genreCtrl = fb.control(null, [Validators.required]);
+    this.supportCtrl = fb.control(null, [Validators.required]);
     this.form = fb.group({
       nom: this.nomCtrl,
       editeur: this.editeurCtrl,
@@ -54,11 +57,25 @@ export class EditJeuxSocieteComponent implements OnInit {
       nbJoueursMax: this.nbJMaxCtrl,
       duree: this.dureeCtrl,
       description: this.descriptionCtrl,
+
+      date: this.dateCtrl,
     });
   }
 
   submit() {
     console.log(this.form);
+
+    let genre: TypeJeuxSociete[] = [];
+    for (let i = 0; i < this.genreCtrl.value.length; i++) {
+      genre[i] = (<any>TypeJeuxSociete)[this.genreCtrl.value[i]];
+    }
+    let support: SupportJeuxSociete[] = [];
+    for (let i = 0; i < this.supportCtrl.value.length; i++) {
+      support[i] = (<any>SupportJeuxSociete)[this.supportCtrl.value[i]];
+    }
+
+    console.log(genre);
+    console.log(support);
   }
   ngOnInit(): void {}
 }
