@@ -1,3 +1,4 @@
+import { JeuVideoDetailComponent } from './component/jeu-video-detail/jeu-video-detail.component';
 import { HomeJeuSocieteComponent } from './home-jeu-societe/home-jeu-societe.component';
 import { HomeJeuVideoComponent } from './home-jeu-video/home-jeu-video.component';
 import { PanierComponent } from './component/panier/panier.component';
@@ -45,6 +46,10 @@ export const routes: Routes = [
   {
     path: 'jeuxvideo',
     component: HomeJeuVideoComponent,
+  },
+  {
+    path: 'jeuxvideo/:id',
+    component: JeuVideoDetailComponent,
   },
   {
     path: 'jeuxsociete',

@@ -7,39 +7,63 @@ export class JeuxVideo {
     private _nom: string = '',
     private _editeur: string = '',
     private _prix: number = 0,
-    private _datesortie: Date = new Date(),
+    private _nbJoueursMax: number = 0,
+    private _nbJoueursMin: number = 0,
+    private _dateSortie: Date = new Date(),
     private _ageMin: number = 0,
     private _description: string = '',
-    private _nbJoueursMin: number = 0,
-    private _nbJoueursMax: number = 0,
     private _noteMoyenne: number = 0,
-    private _avis: EditAvisComponent[],
-    private _genre: TypeJeuxVideo[],
-    private _support: PlateformeJeuxVideo[]
+    private _avis: EditAvisComponent[] = [],
+    private _genre: TypeJeuxVideo[] = [],
+    private _support: PlateformeJeuxVideo[] = []
   ) {}
 
   /**
+   * Getter avis
+   * @return {EditAvisComponent[] }
+   */
+  public get avis(): EditAvisComponent[] {
+    return this._avis;
+  }
+
+  /**
+   * Setter avis
+   * @param {EditAvisComponent[] } value
+   */
+  public set avis(value: EditAvisComponent[]) {
+    this._avis = value;
+  }
+
+  /**
    * Getter genre
-   * @return {TypeJeuxVideo }
+   * @return {TypeJeuxVideo[] }
    */
   public get genre(): TypeJeuxVideo[] {
     return this._genre;
   }
 
   /**
+   * Setter genre
+   * @param {TypeJeuxVideo[] } value
+   */
+  public set genre(value: TypeJeuxVideo[]) {
+    this._genre = value;
+  }
+
+  /**
    * Getter support
-   * @return {PlateformeJeuxVideo }
+   * @return {PlateformeJeuxVideo[] }
    */
   public get support(): PlateformeJeuxVideo[] {
     return this._support;
   }
 
   /**
-   * Getter avis
-   * @return {EditAvisComponent }
+   * Setter support
+   * @param {PlateformeJeuxVideo[] } value
    */
-  public get avis(): EditAvisComponent[] {
-    return this._avis;
+  public set support(value: PlateformeJeuxVideo[]) {
+    this._support = value;
   }
 
   /**
@@ -78,8 +102,8 @@ export class JeuxVideo {
    * Getter datesortie
    * @return {Date }
    */
-  public get datesortie(): Date {
-    return this._datesortie;
+  public get dateSortie(): Date {
+    return this._dateSortie;
   }
 
   /**
@@ -182,8 +206,8 @@ export class JeuxVideo {
    * Setter datesortie
    * @param {Date } value
    */
-  public set datesortie(value: Date) {
-    this._datesortie = value;
+  public set dateSortie(value: Date) {
+    this._dateSortie = value;
   }
 
   /**

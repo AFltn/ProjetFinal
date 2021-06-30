@@ -295,209 +295,54 @@
           </div>
         </header>
         <!-- sect-heading -->
-
-        <div class="row">
-          <div class="col-md-4">
-            <figure class="card card-product-grid">
-              <div class="img-wrap">
-                <span class="badge badge-danger"> NEW </span>
-                <img src="assets/images/items/1.jpg" />
-                <a class="btn-overlay" href="#"
-                  ><i class="fa fa-search-plus"></i> Quick view</a
-                >
-              </div>
-              <!-- img-wrap.// -->
-              <figcaption class="info-wrap">
-                <div class="fix-height">
-                  <a href="#" class="title">Great item name goes here</a>
-                  <div class="price-wrap mt-2">
-                    <span class="price">$1280</span>
-                    <del class="price-old">$1980</del>
+        <div class="container d-flex justify-content-center mt-50 mb-50">
+          <div class="row">
+            <td *ngFor="let j of jeuxVideos | async">
+              <div class="col-md-4 mt-2">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="card-img-actions">
+                      <img
+                        src="https://zupimages.net/up/21/26/4kn7.jpg"
+                        class="card-img img-fluid"
+                        width="96"
+                        height="350"
+                        alt=""
+                      />
+                    </div>
                   </div>
-                  <!-- price-wrap.// -->
-                </div>
-                <a href="#" class="btn btn-block btn-primary">Add to cart </a>
-              </figcaption>
-            </figure>
-          </div>
-          <!-- col.// -->
-
-          <div class="col-md-4">
-            <figure class="card card-product-grid">
-              <div class="img-wrap">
-                <img src="assets/images/items/2.jpg" />
-                <a class="btn-overlay" href="#"
-                  ><i class="fa fa-search-plus"></i> Quick view</a
-                >
-              </div>
-              <!-- img-wrap.// -->
-              <figcaption class="info-wrap">
-                <div class="fix-height">
-                  <a href="#" class="title"
-                    >Product name goes here just for demo item</a
-                  >
-                  <div class="price-wrap mt-2">
-                    <span class="price">$1280</span>
+                  <div class="card-body bg-light text-center">
+                    <div class="mb-2">
+                      <h6 class="font-weight-semibold mb-2">
+                        <a
+                          [routerLink]="['/jeuxvideo', j.id]"
+                          routerLinkActive="active"
+                          class="text-default mb-2"
+                          data-abc="true"
+                          >{{ j.nom }}</a
+                        >
+                      </h6>
+                      <a href="#" class="text-muted" data-abc="true"
+                        >Laptops & Notebooks</a
+                      >
+                    </div>
+                    <h3 class="mb-0 font-weight-semibold">{{ j.prix }}$</h3>
+                    <div>
+                      <i class="fa fa-star star"></i>
+                      <i class="fa fa-star star"></i>
+                      <i class="fa fa-star star"></i>
+                      <i class="fa fa-star star"></i>
+                    </div>
+                    <div class="text-muted mb-3">34 reviews</div>
+                    <button type="button" class="btn bg-cart">
+                      <i class="fa fa-cart-plus mr-2"></i> Add to cart
+                    </button>
                   </div>
-                  <!-- price-wrap.// -->
                 </div>
-                <a href="#" class="btn btn-block btn-primary">Add to cart </a>
-              </figcaption>
-            </figure>
-          </div>
-          <!-- col.// -->
-
-          <div class="col-md-4">
-            <figure class="card card-product-grid">
-              <div class="img-wrap">
-                <img src="assets/images/items/3.jpg" />
-                <a class="btn-overlay" href="#"
-                  ><i class="fa fa-search-plus"></i> Quick view</a
-                >
               </div>
-              <!-- img-wrap.// -->
-              <figcaption class="info-wrap">
-                <div class="fix-height">
-                  <a href="#" class="title"
-                    >Product name goes here just for demo item</a
-                  >
-                  <div class="price-wrap mt-2">
-                    <span class="price">$1280</span>
-                  </div>
-                  <!-- price-wrap.// -->
-                </div>
-                <a href="#" class="btn btn-block btn-primary">Add to cart </a>
-              </figcaption>
-            </figure>
+            </td>
           </div>
-          <!-- col.// -->
-
-          <div class="col-md-4">
-            <figure class="card card-product-grid">
-              <div class="img-wrap">
-                <img src="assets/images/items/4.jpg" />
-                <a class="btn-overlay" href="#"
-                  ><i class="fa fa-search-plus"></i> Quick view</a
-                >
-              </div>
-              <!-- img-wrap.// -->
-              <figcaption class="info-wrap">
-                <div class="fix-height">
-                  <a href="#" class="title"
-                    >Product name goes here just for demo item</a
-                  >
-                  <div class="price-wrap mt-2">
-                    <span class="price">$1280</span>
-                  </div>
-                  <!-- price-wrap.// -->
-                </div>
-                <a href="#" class="btn btn-block btn-primary">Add to cart </a>
-              </figcaption>
-            </figure>
-          </div>
-          <!-- col.// -->
-
-          <div class="col-md-4">
-            <figure class="card card-product-grid">
-              <div class="img-wrap">
-                <img src="assets/images/items/5.jpg" />
-                <a class="btn-overlay" href="#"
-                  ><i class="fa fa-search-plus"></i> Quick view</a
-                >
-              </div>
-              <!-- img-wrap.// -->
-              <figcaption class="info-wrap">
-                <div class="fix-height">
-                  <a href="#" class="title"
-                    >Product name goes here just for demo item</a
-                  >
-                  <div class="price-wrap mt-2">
-                    <span class="price">$1280</span>
-                  </div>
-                  <!-- price-wrap.// -->
-                </div>
-                <a href="#" class="btn btn-block btn-primary">Add to cart </a>
-              </figcaption>
-            </figure>
-          </div>
-          <!-- col.// -->
-
-          <div class="col-md-4">
-            <figure class="card card-product-grid">
-              <div class="img-wrap">
-                <img src="assets/images/items/6.jpg" />
-                <a class="btn-overlay" href="#"
-                  ><i class="fa fa-search-plus"></i> Quick view</a
-                >
-              </div>
-              <!-- img-wrap.// -->
-              <figcaption class="info-wrap">
-                <div class="fix-height">
-                  <a href="#" class="title"
-                    >Product name goes here just for demo item</a
-                  >
-                  <div class="price-wrap mt-2">
-                    <span class="price">$1280</span>
-                  </div>
-                  <!-- price-wrap.// -->
-                </div>
-                <a href="#" class="btn btn-block btn-primary">Add to cart </a>
-              </figcaption>
-            </figure>
-          </div>
-          <!-- col.// -->
-
-          <div class="col-md-4">
-            <figure class="card card-product-grid">
-              <div class="img-wrap">
-                <img src="assets/images/items/7.jpg" />
-                <a class="btn-overlay" href="#"
-                  ><i class="fa fa-search-plus"></i> Quick view</a
-                >
-              </div>
-              <!-- img-wrap.// -->
-              <figcaption class="info-wrap">
-                <div class="fix-height">
-                  <a href="#" class="title"
-                    >Product name goes here just for demo item</a
-                  >
-                  <div class="price-wrap mt-2">
-                    <span class="price">$1280</span>
-                  </div>
-                  <!-- price-wrap.// -->
-                </div>
-                <a href="#" class="btn btn-block btn-primary">Add to cart </a>
-              </figcaption>
-            </figure>
-          </div>
-          <!-- col.// -->
-
-          <div class="col-md-4">
-            <figure class="card card-product-grid">
-              <div class="img-wrap">
-                <img src="assets/images/items/1.jpg" />
-                <a class="btn-overlay" href="#"
-                  ><i class="fa fa-search-plus"></i> Quick view</a
-                >
-              </div>
-              <!-- img-wrap.// -->
-              <figcaption class="info-wrap">
-                <div class="fix-height">
-                  <a href="#" class="title"
-                    >Product name goes here just for demo item</a
-                  >
-                  <div class="price-wrap mt-2">
-                    <span class="price">$1280</span>
-                  </div>
-                  <!-- price-wrap.// -->
-                </div>
-                <a href="#" class="btn btn-block btn-primary">Add to cart </a>
-              </figcaption>
-            </figure>
-          </div>
-          <!-- col.// -->
         </div>
-        <!-- row end.// -->
 
         <nav class="mt-4" aria-label="Page navigation sample">
           <ul class="pagination">
