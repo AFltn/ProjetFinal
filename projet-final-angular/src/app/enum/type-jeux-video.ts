@@ -8,5 +8,5 @@ export enum TypeJeuxVideo {
   simulation,
   course,
   gestion,
-  Plate = 'Plate-forme',
+  Plateforme,
 }
