@@ -26,28 +26,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-//import sopraAjc.projetFinal.entities.Fournisseur;
-import sopraAjc.projetFinal.entities.JeuVideo;
+import sopraAjc.projetFinal.entities.JeuSociete;
 import sopraAjc.projetFinal.entities.views.Views;
-import sopraAjc.projetFinal.exceptions.JeuVideoException;
-import sopraAjc.projetFinal.exceptions.rest.JeuVideoInvalidException;
-import sopraAjc.projetFinal.services.JeuVideoService;
+import sopraAjc.projetFinal.exceptions.JeuSocieteException;
+import sopraAjc.projetFinal.exceptions.rest.JeuSocieteInvalidException;
+import sopraAjc.projetFinal.services.JeuSocieteService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/jeuxVideo")
-public class JeuVideoRestController {
+@RequestMapping("/api/jeuxSociete")
+public class JeuSocieteRestController {
 
-	private Logger logger = LoggerFactory.getLogger(JeuVideoRestController.class);
+	private Logger logger = LoggerFactory.getLogger(JeuSocieteRestController.class);
 
 	@Autowired
-	private JeuVideoService JeuVideoService;
+	private JeuSocieteService JeuSocieteService;
 //	@Autowired
 //	private FournisseurService fournisseurService;
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
-	public List<JeuVideo> getAllJeuVideo() {
+	public List<JeuSociete> getAllJeuSociete() {
 		return getAll();
 	}
 
@@ -57,44 +56,44 @@ public class JeuVideoRestController {
 //		return getAll();
 //	}
 
-	private List<JeuVideo> getAll() {
-		return JeuVideoService.getAll();
+	private List<JeuSociete> getAll() {
+		return JeuSocieteService.getAll();
 	}
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
-	public JeuVideo create(@Valid @RequestBody JeuVideo JeuVideo, BindingResult br) {
+//	@JsonView(Views.JeuSocieteWithFournisseur.class)
+	public JeuSociete create(@Valid @RequestBody JeuSociete JeuSociete, BindingResult br) {
 		if (br.hasErrors()) {
-			throw new JeuVideoInvalidException();
+			throw new JeuSocieteInvalidException();
 		}
 		try {
-			JeuVideo = JeuVideoService.save(JeuVideo);
+			JeuSociete = JeuSocieteService.save(JeuSociete);
 		} catch (Exception e) {
-			throw new JeuVideoInvalidException();
+			throw new JeuSocieteInvalidException();
 		}
-		return JeuVideo;
+		return JeuSociete;
 	}
 
 	@GetMapping("{id}")
 	@JsonView(Views.Common.class)
-	public JeuVideo getJeuVideoById(@PathVariable Integer id) {
+	public JeuSociete getJeuSocieteById(@PathVariable Integer id) {
 		return getById(id);
 
 	}
 
 //	@GetMapping("/{id}/fournisseur")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
-//	public JeuVideo getJeuVideoByIdWithFournisseur(@PathVariable Integer id) {
+//	@JsonView(Views.JeuSocieteWithFournisseur.class)
+//	public JeuVideo getJeuSocieteByIdWithFournisseur(@PathVariable Integer id) {
 //		return getById(id);
 //	}
 
-	private JeuVideo getById(Integer id) {
-		JeuVideo p = null;
+	private JeuSociete getById(Integer id) {
+		JeuSociete p = null;
 		try {
-			p = JeuVideoService.getById(id);
-		} catch (JeuVideoException e) {
-			throw new JeuVideoInvalidException();
+			p = JeuSocieteService.getById(id);
+		} catch (JeuSocieteException e) {
+			throw new JeuSocieteInvalidException();
 		}
 		return p;
 	}
@@ -102,37 +101,37 @@ public class JeuVideoRestController {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Integer id) {
-		JeuVideoService.delete(id);
+		JeuSocieteService.delete(id);
 	}
 
 	@PutMapping("/{id}")
 //	@JsonView(Views.JeuVideoWithFournisseur.class)
-	public JeuVideo update(@Valid @RequestBody JeuVideo JeuVideo, BindingResult br, @PathVariable Integer id) {
+	public JeuSociete update(@Valid @RequestBody JeuSociete JeuSociete, BindingResult br, @PathVariable Integer id) {
 		logger.trace(br.toString());
 		if (br.hasErrors()) {
 			// System.out.println("binding resut");
 			logger.trace("binding result");
-			throw new JeuVideoInvalidException();
+			throw new JeuSocieteInvalidException();
 		}
-		JeuVideo.setId(id);
+		JeuSociete.setId(id);
 		try {
-			JeuVideo = JeuVideoService.save(JeuVideo);
+			JeuSociete = JeuSocieteService.save(JeuSociete);
 		} catch (Exception e) {
 			// System.out.println("save");
 			logger.trace("save");
-			throw new JeuVideoInvalidException();
+			throw new JeuSocieteInvalidException();
 		}
-		return JeuVideo;
+		return JeuSociete;
 	}
 
 	@PatchMapping("/{id}")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
-	public JeuVideo update(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
+//	@JsonView(Views.JeuSocieteWithFournisseur.class)
+	public JeuSociete update(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
 		try {
 			System.out.println(fields);
-			final JeuVideo JeuVideoEnBase = JeuVideoService.getById(id);
+			final JeuSociete JeuSocieteEnBase = JeuSocieteService.getById(id);
 			fields.forEach((key, value) -> {
-				Field field = ReflectionUtils.findField(JeuVideo.class, key);
+				Field field = ReflectionUtils.findField(JeuSociete.class, key);
 				ReflectionUtils.makeAccessible(field);
 				if (key.equals("fournisseur")) {
 					System.out.println(((Map) value).get("id"));
@@ -149,14 +148,14 @@ public class JeuVideoRestController {
 //					});
 					// JeuVideoEnBase.setFournisseur(frs);
 				} else {
-					ReflectionUtils.setField(field, JeuVideoEnBase, value);
+					ReflectionUtils.setField(field, JeuSocieteEnBase, value);
 				}
 			});
-			JeuVideoService.save(JeuVideoEnBase);
-			return JeuVideoEnBase;
+			JeuSocieteService.save(JeuSocieteEnBase);
+			return JeuSocieteEnBase;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new JeuVideoInvalidException();
+			throw new JeuSocieteInvalidException();
 		}
 
 	}

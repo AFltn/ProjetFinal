@@ -21,7 +21,7 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 @Entity
 @Table(name = "JeuSociete")
-@SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
+//@SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
 public class JeuSociete extends Produit{
 
 	@JsonView(Views.Common.class)
@@ -46,6 +46,10 @@ public class JeuSociete extends Produit{
 	private Set <SupportJeuSociete> support;
 
 
+	public JeuSociete() {
+
+	}
+	
 	public JeuSociete(Set<TypeJeuSociete> genre, String duree, Set<SupportJeuSociete> support) {
 	
 		this.genre = genre;

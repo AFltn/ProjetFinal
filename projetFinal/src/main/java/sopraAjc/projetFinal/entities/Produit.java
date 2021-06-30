@@ -32,7 +32,7 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 @SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
 
 @JsonTypeInfo(

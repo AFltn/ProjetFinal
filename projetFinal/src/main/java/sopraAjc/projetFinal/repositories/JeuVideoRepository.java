@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import sopraAjc.projetFinal.entities.JeuVideo;
 
-public interface JeuVideoRepositry extends JpaRepository<JeuVideo, Integer> {
+public interface JeuVideoRepository extends JpaRepository<JeuVideo, Integer> {
 	List<JeuVideo> findByNom(String nom);
 
 	List<JeuVideo> findByNomLike(String nom);

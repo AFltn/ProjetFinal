@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import sopraAjc.projetFinal.entities.JeuVideo;
 import sopraAjc.projetFinal.exceptions.JeuVideoException;
-import sopraAjc.projetFinal.repositories.JeuVideoRepositry;
+import sopraAjc.projetFinal.repositories.JeuVideoRepository;
 
 @Service
 public class JeuVideoService {
 	@Autowired
-	private JeuVideoRepositry JeuVideoRepository;
+	private JeuVideoRepository JeuVideoRepository;
 	@Autowired
 	private CommandeService commandeService;
 
@@ -56,7 +56,7 @@ public class JeuVideoService {
 				return opt.get();
 			}
 		}
-		throw new JeuVideoException("JeuVideo introuvable");
+		throw new JeuVideoException("Jeu vidéo introuvable");
 		// return new JeuVideo();
 	}
 
