@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jeux-video.component.css'],
 })
 export class JeuxVideoComponent implements OnInit {
-  jv1: JeuxVideo = new JeuxVideo(
+  /* jv1: JeuxVideo = new JeuxVideo(
     777,
     'Mario Kart8',
     'Nintendo',
@@ -26,7 +26,7 @@ export class JeuxVideoComponent implements OnInit {
     [new EditAvisComponent()],
     [TypeJeuxVideo.course],
     [PlateformeJeuxVideo.SWITCH]
-  );
+  ); */
 
   constructor(
     private jeuxVideoService: JeuxVideoService,

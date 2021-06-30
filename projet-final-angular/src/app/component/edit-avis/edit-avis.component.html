@@ -1,1 +1,24 @@
-<p>edit-avis works!</p>
+<form [formGroup]="form">
+  <div class="form-outline mb-4">
+    <input
+      type="number"
+      name="note"
+      id="note"
+      class="form-control"
+      [formControl]="noteCtrl"
+      placeholder="Saisir votre note :"
+    />
+  </div>
+  <div></div>
+  <div class="form-outline mb-4">
+    <input
+      type="texte"
+      name="com"
+      id="com"
+      class="form-control"
+      [formControl]="commentaireCtrl"
+      placeholder="Saisir votre commentaire :"
+    />
+  </div>
+  <div></div>
+</form>

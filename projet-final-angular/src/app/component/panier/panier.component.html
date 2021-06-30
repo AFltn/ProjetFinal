@@ -11,23 +11,34 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let p of jeuVideo">
+    <tr *ngFor="let p of elemCommande">
       <td>{{ p.nom }}</td>
       <td>{{ p.prix }}</td>
-      <td>Quantité</td>
-      <td>Prix tot</td>
+      <td>{{ p.quantite }}</td>
+      <td>{{ p.prix * p.quantite }}</td>
     </tr>
   </tbody>
 </table>
+
+<h4>Moyen de Paiment :</h4>
+<form [formGroup]="form">
+  <select class="form-control" [formControl]="paiementCtrl">
+    <option value="Visa">Visa</option>
+    <option value="MasterCard">MasterCard</option>
+    <option value="Paypal">Paypal</option>
+  </select>
+</form>
+<h4>Mode de livraison :</h4>
 
 <button [routerLink]="['/home']" routerLinkActive="active">
   vider le panier
 </button>
 
-<button [routerLink]="['/home']" routerLinkActive="active">
+<button [routerLink]="['/home']" routerLinkActive="active" (click)="myFunc()">
   Valider votre commande
 </button>
 
 <button [routerLink]="['/home']" routerLinkActive="active">
   annuler la commande
 </button>
+<hr />
