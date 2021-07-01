@@ -56,12 +56,20 @@
                 >
               </li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Mangas (Prochainement)</a>
+              </li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a
+              *ngIf="isLogged()"
+              class="nav-link"
+              [routerLink]="['/admin']"
+              routerLinkActive="active"
+              >ADMIN PANEL</a
+            >
           </li>
 
           <li class="nav-item">

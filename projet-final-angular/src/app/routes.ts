@@ -1,3 +1,5 @@
+import { EditAvisComponent } from './component/edit-avis/edit-avis.component';
+import { AdminPanelComponent } from './component/admin-panel/admin-panel.component';
 import { JeuxSocieteDetailsComponent } from './component/jeux-societe-details/jeux-societe-details.component';
 import { JeuVideoDetailComponent } from './component/jeu-video-detail/jeu-video-detail.component';
 
@@ -22,8 +24,18 @@ export const routes: Routes = [
   { path: 'edit-client', component: EditClientComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: 'client',
+    path: 'listclient',
     component: ListClientComponent,
+    canActivate: [UtilisateurConnecteService],
+  },
+  {
+    path: 'admin',
+    component: AdminPanelComponent,
+    canActivate: [UtilisateurConnecteService],
+  },
+  {
+    path: 'editavis',
+    component: EditAvisComponent,
     canActivate: [UtilisateurConnecteService],
   },
   {
