@@ -1,5 +1,3 @@
-import { MatSelectModule } from '@angular/material/select';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -59,7 +57,6 @@ import { JeuxSocieteDetailsComponent } from './component/jeux-societe-details/je
     HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
