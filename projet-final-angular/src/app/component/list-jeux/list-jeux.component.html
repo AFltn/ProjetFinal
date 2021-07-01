@@ -1,0 +1,41 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id :</th>
+      <th>Nom :</th>
+      <th>Editeur :</th>
+      <th>Date de Sortie :</th>
+      <th>Prix :</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let j of jeuVideo | async">
+      <td>{{ j.id }}</td>
+      <td>{{ j.nom }}</td>
+      <td>{{ j.editeur }}</td>
+      <td>{{ j.dateSortie }}</td>
+      <td>{{ j.prix }}</td>
+      <td>
+        <a
+          class="btn btn-outline-primary"
+          [routerLink]="['/jeuxvideo', 'edit', j.id]"
+          routerLinkActive="active"
+          >Modifier</a
+        >
+      </td>
+      <td>
+        <button (click)="delete(j.id)" class="btn btn-outline-danger">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a
+  class="btn btn-link"
+  [routerLink]="['/jeuxvideo', 'edit']"
+  routerLinkActive="active"
+  >Ajouter un jeux vidéos</a
+>

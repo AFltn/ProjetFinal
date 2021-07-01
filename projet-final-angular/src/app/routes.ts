@@ -1,5 +1,9 @@
 import { JeuVideoDetailComponent } from './component/jeu-video-detail/jeu-video-detail.component';
 import { EditJeuxVideoComponent } from './component/edit-jeux-video/edit-jeux-video.component';
+import { EditAvisComponent } from './component/edit-avis/edit-avis.component';
+import { AdminPanelComponent } from './component/admin-panel/admin-panel.component';
+import { JeuxSocieteDetailsComponent } from './component/jeux-societe-details/jeux-societe-details.component';
+
 import { HomeJeuSocieteComponent } from './home-jeu-societe/home-jeu-societe.component';
 import { HomeJeuVideoComponent } from './home-jeu-video/home-jeu-video.component';
 import { PanierComponent } from './component/panier/panier.component';
@@ -15,15 +19,22 @@ import { ProfilClientComponent } from './component/profil-client/profil-client.c
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'jeux-societe', component: JeuxSocieteComponent },
-  { path: 'edit-jeux-societe', component: EditJeuxSocieteComponent },
-  { path: 'edit-jeux-video', component: EditJeuxVideoComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'edit-client', component: EditClientComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: 'client',
+    path: 'listclient',
     component: ListClientComponent,
+    canActivate: [UtilisateurConnecteService],
+  },
+  {
+    path: 'admin',
+    component: AdminPanelComponent,
+    canActivate: [UtilisateurConnecteService],
+  },
+  {
+    path: 'editavis',
+    component: EditAvisComponent,
     canActivate: [UtilisateurConnecteService],
   },
   {
@@ -56,5 +67,10 @@ export const routes: Routes = [
   {
     path: 'jeuxsociete',
     component: HomeJeuSocieteComponent,
+  },
+
+  {
+    path: 'jeuxsociete/:id',
+    component: JeuxSocieteDetailsComponent,
   },
 ];

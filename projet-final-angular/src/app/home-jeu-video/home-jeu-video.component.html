@@ -1,177 +1,117 @@
-<section class="section-content padding-y">
-  <div class="container">
-    <div class="row">
-      <aside class="col-md-3">
-        <div class="card">
-          <article class="filter-group">
-            <header class="card-header">
-              <a
-                href="#"
-                data-toggle="collapse"
-                data-target="#collapse_1"
-                aria-expanded="true"
-                class=""
-              >
-                <i class="icon-control fa fa-chevron-down"></i>
-                <h6 class="title">Product type</h6>
-              </a>
-            </header>
-            <div class="filter-content collapse show" id="collapse_1" style="">
-              <div class="card-body">
-                <form class="pb-3">
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Search"
-                    />
-                    <div class="input-group-append">
-                      <button class="btn btn-light" type="button">
-                        <i class="fa fa-search"></i>
-                      </button>
-                    </div>
+<div>
+  <!-- Header-->
+  <header class="bg-dark py-4">
+    <div class="container px-4 px-lg-4 my-4">
+      <div class="text-center text-white">
+        <h5 class="display-6 fw-bolder">Nos jeux vidéo</h5>
+      </div>
+    </div>
+  </header>
+  <!-- Section-->
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+      <div
+        class="
+          row
+          gx-4 gx-lg-5
+          row-cols-2 row-cols-md-3 row-cols-xl-4
+          justify-content-center
+        "
+      >
+        <td *ngFor="let j of jeuxVideos | async; let i = index">
+          <div *ngIf="i < 4">
+            <div class="col mb-5">
+              <div class="card h-100">
+                <!-- Product image-->
+                <img
+                  class="card-img-top"
+                  src="https://www.zupimages.net/up/21/26/4kn7.jpg"
+                  alt="..."
+                />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                  <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">{{ j.nom }}</h5>
+                    <!-- Note moyenne produit-->
+                    {{ noteMoyenne(j) }}
                   </div>
-                </form>
-
-                <ul class="list-menu">
-                  <li><a href="#">People </a></li>
-                  <li><a href="#">Watches </a></li>
-                  <li><a href="#">Cinema </a></li>
-                  <li><a href="#">Clothes </a></li>
-                  <li><a href="#">Home items </a></li>
-                  <li><a href="#">Animals</a></li>
-                  <li><a href="#">People </a></li>
-                </ul>
-              </div>
-              <!-- card-body.// -->
-            </div>
-          </article>
-          <!-- filter-group .// -->
-          <article class="filter-group">
-            <div class="filter-content collapse in" id="collapse_5" style="">
-              <div class="card-body">
-                <label class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    name="myfilter_radio"
-                    checked=""
-                    class="custom-control-input"
-                  />
-                  <div class="custom-control-label">Any condition</div>
-                </label>
-
-                <label class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    name="myfilter_radio"
-                    class="custom-control-input"
-                  />
-                  <div class="custom-control-label">Brand new</div>
-                </label>
-
-                <label class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    name="myfilter_radio"
-                    class="custom-control-input"
-                  />
-                  <div class="custom-control-label">Used items</div>
-                </label>
-
-                <label class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    name="myfilter_radio"
-                    class="custom-control-input"
-                  />
-                  <div class="custom-control-label">Very old</div>
-                </label>
-              </div>
-              <!-- card-body.// -->
-            </div>
-          </article>
-          <!-- filter-group .// -->
-        </div>
-        <!-- card.// -->
-      </aside>
-      <!-- col.// -->
-      <main class="col-md-9">
-        <header class="border-bottom mb-4 pb-3">
-          <div class="form-inline">
-            <select class="mr-2 form-control">
-              <option>Latest items</option>
-              <option>Trending</option>
-              <option>Most Popular</option>
-              <option>Cheapest</option>
-            </select>
-          </div>
-        </header>
-        <!-- sect-heading -->
-        <div class="container d-flex justify-content-center mt-50 mb-50">
-          <div class="row">
-            <td *ngFor="let j of jeuxVideos | async">
-              <div class="col-md-4 mt-2">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card-img-actions">
-                      <img
-                        src="https://zupimages.net/up/21/26/4kn7.jpg"
-                        class="card-img img-fluid"
-                        width="96"
-                        height="350"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                      <h6 class="font-weight-semibold mb-2">
-                        <a
-                          [routerLink]="['/jeuxvideo', j.id]"
-                          routerLinkActive="active"
-                          class="text-default mb-2"
-                          data-abc="true"
-                          >{{ j.nom }}</a
-                        >
-                      </h6>
-                      <a href="#" class="text-muted" data-abc="true"
-                        >Laptops & Notebooks</a
-                      >
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">{{ j.prix }}$</h3>
-                    <div>
-                      <i class="fa fa-star star"></i>
-                      <i class="fa fa-star star"></i>
-                      <i class="fa fa-star star"></i>
-                      <i class="fa fa-star star"></i>
-                    </div>
-                    <div class="text-muted mb-3">34 reviews</div>
-                    <button type="button" class="btn bg-cart">
-                      <i class="fa fa-cart-plus mr-2"></i> Add to cart
-                    </button>
+                </div>
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                  <div class="text-center">
+                    <!-- pointer vers l'id dans le router-->
+                    <a
+                      class="btn btn-outline-dark mt-auto"
+                      [routerLink]="['/jeuxvideo', j.id]"
+                      routerLinkActive="active"
+                      >Voir plus</a
+                    >
                   </div>
                 </div>
               </div>
-            </td>
+            </div>
           </div>
-        </div>
-
-        <nav class="mt-4" aria-label="Page navigation sample">
-          <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#">Previous</a>
-            </li>
-            <li class="page-item active">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
-      </main>
-      <!-- col.// -->
+        </td>
+      </div>
+    </div>
+  </section>
+  <!-- Zone test -->
+  <div class="container px-4 px-lg-4 my-4">
+    <div class="text-center text-white">
+      <h5 class="display-6 fw-bolder">Jeux du moment!</h5>
     </div>
   </div>
-  <!-- container .//  -->
-</section>
+
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+      <div
+        class="
+          row
+          gx-4 gx-lg-5
+          row-cols-2 row-cols-md-3 row-cols-xl-4
+          justify-content-center
+        "
+      >
+        <td *ngFor="let j of jeuxVideos | async">
+          <div class="col mb-5">
+            <div class="card h-100">
+              <!-- Product image-->
+              <img
+                class="card-img-top"
+                src="https://www.zupimages.net/up/21/26/4kn7.jpg"
+                alt="..."
+              />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">{{ j.nom }}</h5>
+                  <!-- Note moyenne produit-->
+                  {{ noteMoyenne(j) }}
+                </div>
+              </div>
+              <!-- Product actions-->
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                  <!-- pointer vers l'id dans le router-->
+                  <a
+                    class="btn btn-outline-dark mt-auto"
+                    [routerLink]="['/jeuxvideo']"
+                    routerLinkActive="active"
+                    >Voir plus</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</div>

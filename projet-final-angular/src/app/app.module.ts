@@ -25,6 +25,9 @@ import { HomeJeuVideoComponent } from './home-jeu-video/home-jeu-video.component
 import { HomeJeuSocieteComponent } from './home-jeu-societe/home-jeu-societe.component';
 import { JeuVideoDetailComponent } from './component/jeu-video-detail/jeu-video-detail.component';
 import { ListAvisUtilisateurComponent } from './component/list-avis-utilisateur/list-avis-utilisateur.component';
+import { JeuxSocieteDetailsComponent } from './component/jeux-societe-details/jeux-societe-details.component';
+import { AdminPanelComponent } from './component/admin-panel/admin-panel.component';
+import { ListJeuxComponent } from './component/list-jeux/list-jeux.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { ListAvisUtilisateurComponent } from './component/list-avis-utilisateur/
     HomeJeuSocieteComponent,
     JeuVideoDetailComponent,
     ListAvisUtilisateurComponent,
+    JeuxSocieteDetailsComponent,
+    AdminPanelComponent,
+    ListJeuxComponent,
   ],
   imports: [
     BrowserModule,

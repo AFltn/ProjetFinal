@@ -1,3 +1,4 @@
+import { Utilisateur } from './utilisateur';
 import { EditAvisComponent } from './../component/edit-avis/edit-avis.component';
 import { Commande } from './commande';
 import { Adresse } from './adresse';
@@ -12,8 +13,25 @@ export class Client {
     private _mail: string = '',
     private _tel: string = '',
     private _commandes: Commande[] = [],
-    private _avis: Avis
+    private _avis: Avis[] = [],
+    private _utilisateur: Utilisateur
   ) {}
+
+  /**
+   * Getter avis
+   * @return {Avis[]}
+   */
+  public get avis(): Avis[] {
+    return this._avis;
+  }
+
+  /**
+   * Setter avis
+   * @param {Avis[]} value
+   */
+  public set avis(value: Avis[]) {
+    this._avis = value;
+  }
 
   /**
    * Getter commandes

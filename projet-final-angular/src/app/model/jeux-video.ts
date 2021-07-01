@@ -14,7 +14,7 @@ export class JeuxVideo {
     private _ageMin: number = 0,
     private _description: string = '',
     private _noteMoyenne: number = 0,
-    private _avis: Avis,
+    private _avis: Avis[] = [],
     private _genre: TypeJeuxVideo[] = [],
     private _support: PlateformeJeuxVideo[] = []
   ) {}
@@ -97,14 +97,6 @@ export class JeuxVideo {
    */
   public get noteMoyenne(): number {
     return this._noteMoyenne;
-  }
-
-  /**
-   * Getter avis
-   * @return {Avis }
-   */
-  public get avis(): Avis {
-    return this._avis;
   }
 
   /**
@@ -204,10 +196,18 @@ export class JeuxVideo {
   }
 
   /**
-   * Setter avis
-   * @param {Avis } value
+   * Getter avis
+   * @return {Avis[] }
    */
-  public set avis(value: Avis) {
+  public get avis(): Avis[] {
+    return this._avis;
+  }
+
+  /**
+   * Setter avis
+   * @param {Avis[] } value
+   */
+  public set avis(value: Avis[]) {
     this._avis = value;
   }
 

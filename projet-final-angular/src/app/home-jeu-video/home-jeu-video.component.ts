@@ -16,4 +16,15 @@ export class HomeJeuVideoComponent implements OnInit {
   ngOnInit(): void {
     this.jeuxVideos = this.jeuxVideoService.getAll();
   }
+
+  noteMoyenne(jeuVideo: JeuxVideo): number {
+    let cpt: number = 0;
+    let cpt2: number = 0;
+    jeuVideo.avis.forEach((a: any) => {
+      cpt2 = cpt2 + a.note;
+      cpt = cpt + 1;
+    });
+    jeuVideo.noteMoyenne = cpt2 / cpt;
+    return Math.round(jeuVideo.noteMoyenne);
+  }
 }
