@@ -1,21 +1,27 @@
-<form>
+<form (ngSubmit)="send()">
   <!-- Email input -->
-  <div class="form-outline mb-4">
+  <div class="form-outline mb-4" align="center">
     <input
+      name="login"
       type="text"
       id="form1Example1"
       class="form-control"
       placeholder="Login : "
+      [(ngModel)]="login"
+      size="25"
     />
   </div>
 
   <!-- Password input -->
-  <div class="form-outline mb-4">
+  <div class="form-outline mb-4" align="center">
     <input
+      name="password"
       type="password"
       id="form1Example2"
       class="form-control"
       placeholder="Mot de passe :"
+      [(ngModel)]="password"
+      size="10"
     />
   </div>
 
@@ -30,13 +36,16 @@
   </div>
 
   <!-- Submit button -->
-  <button
-    name="btn-connect"
-    type="submit"
-    class="btn btn-primary btn-block"
-    [routerLink]="['/home']"
-    routerLinkActive="active"
-  >
-    Se connecter
-  </button>
+  <div class="container">
+    <div class="vertical-center">
+      <button
+        align="center"
+        name="btn-connect"
+        type="submit"
+        class="btn btn-primary btn-block"
+      >
+        Se connecter
+      </button>
+    </div>
+  </div>
 </form>

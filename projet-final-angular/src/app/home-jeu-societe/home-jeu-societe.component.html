@@ -1,1 +1,65 @@
-<p>home-jeu-societe works!</p>
+<div>
+  <!-- Header-->
+  <header class="bg-dark py-4">
+    <div class="container px-4 px-lg-4 my-4">
+      <div class="text-center text-white">
+        <h5 class="display-6 fw-bolder">Nos jeux de société</h5>
+      </div>
+    </div>
+  </header>
+  <!-- Section-->
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+      <div
+        class="
+          row
+          gx-4 gx-lg-5
+          row-cols-2 row-cols-md-3 row-cols-xl-4
+          justify-content-center
+        "
+      >
+        <td *ngFor="let j of jeuxSocietes | async; let i = index">
+          <div *ngIf="i < 8">
+            <div class="col mb-5">
+              <div class="card h-100">
+                <!-- Product image-->
+                <img
+                  class="card-img-top"
+                  src="https://www.zupimages.net/up/21/26/4kn7.jpg"
+                  alt="..."
+                />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                  <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">{{ j.nom }}</h5>
+                    <!-- Note moyenne produit-->
+                    {{ noteMoyenne(j) }}
+                  </div>
+                </div>
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                  <div class="text-center">
+                    <!-- pointer vers l'id dans le router-->
+                    <a
+                      class="btn btn-outline-dark mt-auto"
+                      [routerLink]="['/jeuxvideo', j.id]"
+                      routerLinkActive="active"
+                      >Voir plus</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </div>
+    </div>
+  </section>
+  <!-- Zone test -->
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</div>
