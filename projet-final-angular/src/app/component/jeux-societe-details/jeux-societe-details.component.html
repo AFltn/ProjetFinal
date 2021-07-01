@@ -16,7 +16,7 @@
 
 <section class="jumbotron text-center">
   <div class="container">
-    <h1 class="jumbotron-heading">{{ jeuVideo.nom }}</h1>
+    <h1 class="jumbotron-heading">{{ jeuSociete.nom }}</h1>
   </div>
 </section>
 
@@ -40,7 +40,7 @@
     <div class="col-12 col-lg-6 add_to_cart_block">
       <div class="card bg-light mb-3">
         <div class="card-body">
-          <p class="price">{{ jeuVideo.prix | currency: "EUR" }}</p>
+          <p class="price">{{ jeuSociete.prix | currency: "EUR" }}</p>
 
           <form method="get" action="cart.html">
             <div class="form-group">
@@ -122,14 +122,14 @@
         </div>
         <div class="card-body">
           <ul>
-            <li>Description : {{ jeuVideo.description }}</li>
-            <li>Age minimum : {{ jeuVideo.ageMin }}</li>
-            <li>Editeur : {{ jeuVideo.editeur }}</li>
-            <li>Nombre de joueur minimum : {{ jeuVideo.nbJoeursMin }}</li>
-            <li>Nombre de joueur maximum :{{ jeuVideo.nbJouersMax }}</li>
-            <li>Date de sortie : {{ jeuVideo.dateSortie }}</li>
-            <li>Genre : {{ jeuVideo.genre }}</li>
-            <li>Support : {{ jeuVideo.support }}</li>
+            <li>Description : {{ jeuSociete.description }}</li>
+            <li>Age minimum : {{ jeuSociete.ageMin }}</li>
+            <li>Editeur : {{ jeuSociete.editeur }}</li>
+            <li>Nombre de joueur minimum : {{ jeuSociete.nbJoeursMin }}</li>
+            <li>Nombre de joueur maximum :{{ jeuSociete.nbJouersMax }}</li>
+            <li>Date de sortie : {{ jeuSociete.dateSortie }}</li>
+            <li>Genre : {{ jeuSociete.genre }}</li>
+            <li>Support : {{ jeuSociete.support }}</li>
           </ul>
         </div>
       </div>
@@ -144,7 +144,7 @@
 
         <div class="card-body">
           <!-- boucle des reviews -->
-          <div *ngFor="let a of jeuVideo.avis">
+          <div *ngFor="let a of jeuSociete.avis">
             <div class="review">
               <!-- boucle de stars -->
               <td *ngFor="let j of note(a.note)">

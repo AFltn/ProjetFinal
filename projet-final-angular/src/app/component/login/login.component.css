@@ -1,0 +1,16 @@
+input {
+  width: 50ch;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 0%;
+
+  transform: translateX(400%);
+}
+
+.container {
+  height: 215px;
+  position: relative;
+}

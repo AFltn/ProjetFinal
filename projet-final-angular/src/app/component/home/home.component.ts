@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JeuxVideo } from 'src/app/model/jeux-video';
+import { JeuxVideoService } from 'src/app/services/jeux-video.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,22 @@ import { JeuxVideo } from 'src/app/model/jeux-video';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  jeuxVideos: Observable<JeuxVideo> | any = null;
-  constructor() {}
+  jeuxVideos: Observable<JeuxVideo[]> | any = null;
 
-  ngOnInit(): void {}
+  constructor(private jeuxVideoService: JeuxVideoService) {}
+
+  ngOnInit(): void {
+    this.jeuxVideos = this.jeuxVideoService.getAll();
+  }
+
+  noteMoyenne(jeuVideo: JeuxVideo): number {
+    let cpt: number = 0;
+    let cpt2: number = 0;
+    jeuVideo.avis.forEach((a: any) => {
+      cpt2 = cpt2 + a.note;
+      cpt = cpt + 1;
+    });
+    jeuVideo.noteMoyenne = cpt2 / cpt;
+    return Math.round(jeuVideo.noteMoyenne);
+  }
 }

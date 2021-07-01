@@ -1,6 +1,7 @@
 import { SupportJeuxSociete } from './../enum/support-jeux-societe';
 import { TypeJeuxSociete } from './../enum/type-jeux-societe';
 import { EditAvisComponent } from './../component/edit-avis/edit-avis.component';
+import { Avis } from './avis';
 export class JeuxSociete {
   constructor(
     private _id: number = 0,
@@ -13,11 +14,27 @@ export class JeuxSociete {
     private _nbJoueursMin: number = 0,
     private _nbJoueursMax: number = 0,
     private _noteMoyenne: number = 0,
-    private _avis: EditAvisComponent[],
+    private _avis: Avis[] = [],
     private _genre: TypeJeuxSociete[],
     private _duree: string = '',
     private _support: SupportJeuxSociete[]
   ) {}
+
+  /**
+   * Getter avis
+   * @return {Avis[]}
+   */
+  public get avis(): Avis[] {
+    return this._avis;
+  }
+
+  /**
+   * Setter avis
+   * @param {Avis[]} value
+   */
+  public set avis(value: Avis[]) {
+    this._avis = value;
+  }
 
   /**
    * Getter genre
@@ -33,14 +50,6 @@ export class JeuxSociete {
    */
   public get support(): SupportJeuxSociete[] {
     return this._support;
-  }
-
-  /**
-   * Getter avis
-   * @return {EditAvisComponent }
-   */
-  public get avis(): EditAvisComponent[] {
-    return this._avis;
   }
 
   /**
@@ -145,14 +154,6 @@ export class JeuxSociete {
    */
   public set support(value: SupportJeuxSociete[]) {
     this._support = value;
-  }
-
-  /**
-   * Setter avis
-   * @param {EditAvisComponent[] } value
-   */
-  public set avis(value: EditAvisComponent[]) {
-    this._avis = value;
   }
 
   /**

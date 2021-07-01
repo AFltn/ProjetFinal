@@ -29,4 +29,28 @@ export class JeuVideoDetailComponent implements OnInit {
       }
     });
   }
+
+  nombreAvis(): number {
+    let cpt: number = 0;
+    this.jeuVideo.avis.forEach((a: any) => {
+      console.log(a);
+      cpt = cpt + 1;
+    });
+    return cpt;
+  }
+
+  noteMoyenne(): number {
+    let cpt: number = 0;
+    let cpt2: number = 0;
+    this.jeuVideo.avis.forEach((a: any) => {
+      cpt2 = cpt2 + a.note;
+      cpt = cpt + 1;
+    });
+    this.jeuVideo.noteMoyenne = cpt2 / cpt;
+    return Math.round(this.jeuVideo.noteMoyenne);
+  }
+
+  note(i: number) {
+    return new Array(Math.round(i));
+  }
 }

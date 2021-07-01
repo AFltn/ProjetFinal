@@ -65,7 +65,14 @@
           </li>
 
           <li class="nav-item">
+            <button *ngIf="isLogged()" (click)="logoff()" class="btn btn-link">
+              Se deconnecter
+            </button>
+          </li>
+
+          <li class="nav-item">
             <a
+              *ngIf="!isLogged()"
               class="nav-link"
               [routerLink]="['/login']"
               routerLinkActive="active"
@@ -74,11 +81,22 @@
           </li>
           <li class="nav-item">
             <a
+              *ngIf="!isLogged()"
               class="nav-link"
               [routerLink]="['/edit-client']"
               routerLinkActive="active"
             >
               Créer un compte</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              *ngIf="isLogged()"
+              class="nav-link"
+              [routerLink]="['/edit-client']"
+              routerLinkActive="active"
+            >
+              Mon compte</a
             >
           </li>
         </ul>
@@ -92,7 +110,7 @@
           routerLinkActive="active"
         >
           <i class="bi-cart-fill me-1"></i>
-          Cart
+          Panier
           <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
         </button>
       </form>
