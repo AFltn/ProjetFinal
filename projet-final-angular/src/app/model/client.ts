@@ -4,6 +4,9 @@ import { Commande } from './commande';
 import { Adresse } from './adresse';
 import { Avis } from './avis';
 export class Client {
+  private _commandes: Commande[] = [];
+  private _avis: Avis[] = [];
+
   constructor(
     private _id: number | any = null,
     private _nom: string = '',
@@ -12,14 +15,12 @@ export class Client {
     private _dateNaissance: Date = new Date(),
     private _mail: string = '',
     private _tel: string = '',
-    private _commandes: Commande[] = [],
-    private _avis: Avis[] = [],
-    private _utilisateur: Utilisateur
+    private _utilisateur: Utilisateur | any = null
   ) {}
 
   /**
    * Getter avis
-   * @return {Avis[]}
+   * @return {Avis[] }
    */
   public get avis(): Avis[] {
     return this._avis;
@@ -27,10 +28,26 @@ export class Client {
 
   /**
    * Setter avis
-   * @param {Avis[]} value
+   * @param {Avis[] } value
    */
   public set avis(value: Avis[]) {
     this._avis = value;
+  }
+
+  /**
+   * Getter utilisateur
+   * @return {Utilisateur }
+   */
+  public get utilisateur(): Utilisateur {
+    return this._utilisateur;
+  }
+
+  /**
+   * Setter utilisateur
+   * @param {Utilisateur } value
+   */
+  public set utilisateur(value: Utilisateur) {
+    this._utilisateur = value;
   }
 
   /**

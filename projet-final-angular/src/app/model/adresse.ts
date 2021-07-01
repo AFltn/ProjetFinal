@@ -3,8 +3,25 @@ export class Adresse {
     private _numero: number = 0,
     private _rue: string = '',
     private _codePostal: string = '',
-    private _ville: string = ''
+    private _ville: string = '',
+    private _pays: string = ''
   ) {}
+
+  /**
+   * Getter pays
+   * @return {string }
+   */
+  public get pays(): string {
+    return this._pays;
+  }
+
+  /**
+   * Setter pays
+   * @param {string } value
+   */
+  public set pays(value: string) {
+    this._pays = value;
+  }
 
   /**
    * Getter numero

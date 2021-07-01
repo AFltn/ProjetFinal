@@ -34,10 +34,10 @@
       type="date"
       id="datesortie"
       class="form-control"
-      [formControl]="ageCtrl"
+      [formControl]="dateCtrl"
     />
-    <div *ngIf="prixCtrl.dirty && prixCtrl.invalid" class="alert alert-danger">
-      <span *ngIf="prixCtrl.hasError('required')">prix obligatoire</span>
+    <div *ngIf="dateCtrl.dirty && dateCtrl.invalid" class="alert alert-danger">
+      <span *ngIf="dateCtrl.hasError('required')">Date obligatoire</span>
     </div>
   </div>
   <div class="form-group">

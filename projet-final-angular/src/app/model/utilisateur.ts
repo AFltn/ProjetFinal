@@ -1,13 +1,11 @@
 import { Client } from './client';
 import { Role } from './../enum/role';
 export class Utilisateur {
-  constructor(
-    private _id: number | any = null,
-    private _login: string = '',
-    private _password: string = '',
-    private _role: Role = Role.ROLE_ADMIN,
-    private _client: Client
-  ) {}
+  private _role: Role = Role.ROLE_USER;
+  private _id: number | any = null;
+  private _client: Client | any = null;
+
+  constructor(private _login: string = '', private _password: string = '') {}
 
   /**
    * Getter id

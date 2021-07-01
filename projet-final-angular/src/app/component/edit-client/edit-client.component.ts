@@ -5,6 +5,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Adresse } from 'src/app/model/adresse';
+import { Client } from 'src/app/model/client';
+import { Utilisateur } from 'src/app/model/utilisateur';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-edit-client',
@@ -12,6 +17,8 @@ import {
   styleUrls: ['./edit-client.component.css'],
 })
 export class EditClientComponent implements OnInit {
+  client: Client = new Client();
+  idCtrl: FormControl;
   prenomCtrl: FormControl;
   nomCtrl: FormControl;
   telCtrl: FormControl;
@@ -20,15 +27,24 @@ export class EditClientComponent implements OnInit {
   rueCtrl: FormControl;
   codePostalCtrl: FormControl;
   villeCtrl: FormControl;
+  paysCtrl: FormControl;
   adresseGroup: FormGroup;
   loginCtrl: FormControl;
+  dateCtrl: FormControl;
   passwordCtrl: FormControl;
   confirmCtrl: FormControl;
   passwordGroup: FormGroup;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private clientService: ClientService,
+    private aR: ActivatedRoute,
+    private router: Router
+  ) {
+    this.idCtrl = fb.control('', Validators.required);
     this.prenomCtrl = fb.control('', Validators.required);
+    this.dateCtrl = fb.control('', Validators.required);
     this.nomCtrl = fb.control('', [
       Validators.required,
       Validators.minLength(2),
@@ -45,11 +61,13 @@ export class EditClientComponent implements OnInit {
     this.rueCtrl = this.fb.control('', Validators.required);
     this.codePostalCtrl = this.fb.control('', Validators.required);
     this.villeCtrl = this.fb.control('', Validators.required);
+    this.paysCtrl = this.fb.control('', Validators.required);
     this.adresseGroup = this.fb.group({
       numero: this.numeroCtrl,
       rue: this.rueCtrl,
       codePostal: this.codePostalCtrl,
       ville: this.villeCtrl,
+      pays: this.paysCtrl,
     });
     this.loginCtrl = this.fb.control('', Validators.minLength(6));
     this.passwordCtrl = this.fb.control('', Validators.minLength(8));
@@ -66,6 +84,7 @@ export class EditClientComponent implements OnInit {
     this.form = fb.group({
       prenom: this.prenomCtrl,
       nom: this.nomCtrl,
+      date: this.dateCtrl,
       tel: this.telCtrl,
       mail: this.mailCtrl,
       adressGroup: this.adresseGroup,
@@ -74,8 +93,33 @@ export class EditClientComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form);
-    console.log(this.prenomCtrl.value);
+    this.client = new Client(
+      this.idCtrl.value,
+      this.nomCtrl.value,
+      this.prenomCtrl.value,
+      new Adresse(
+        this.numeroCtrl.value,
+        this.rueCtrl.value,
+        this.codePostalCtrl.value,
+        this.villeCtrl.value,
+        this.paysCtrl.value
+      ),
+      this.dateCtrl.value,
+      this.mailCtrl.value,
+      this.telCtrl.value,
+      new Utilisateur(this.loginCtrl.value, this.confirmCtrl.value)
+    );
+
+    console.log(this.client);
+    if (this.client.id) {
+      this.clientService.update(this.client).subscribe((resut) => {
+        this.router.navigate(['/home']);
+      });
+    } else {
+      this.clientService.create(this.client).subscribe((result) => {
+        this.router.navigate(['/home']);
+      });
+    }
   }
 
   checkPassword(group: FormGroup) {

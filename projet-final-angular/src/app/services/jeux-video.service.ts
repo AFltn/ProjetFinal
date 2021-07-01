@@ -2,6 +2,7 @@ import { JeuxVideo } from './../model/jeux-video';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { JeuxVideoComponent } from '../component/jeux-video/jeux-video.component';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +46,15 @@ export class JeuxVideoService {
     this.initHeader();
     const jeuxVideoFormate = {
       nom: jeuxvideo.nom,
+      editeur: jeuxvideo.editeur,
+      nbJoueursMax: jeuxvideo.nbJoueursMax,
+      nbJoueursMin: jeuxvideo.nbJoueursMin,
+      dateSortie: jeuxvideo.dateSortie,
+      ageMin: jeuxvideo.ageMin,
+      description: jeuxvideo.description,
+      noteMoyenne: jeuxvideo.noteMoyenne,
+      genre: jeuxvideo.genre,
+      support: jeuxvideo.support,
       prix: jeuxvideo.prix,
     };
 

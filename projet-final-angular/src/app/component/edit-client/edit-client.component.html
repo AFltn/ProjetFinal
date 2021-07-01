@@ -46,6 +46,17 @@
 
   <div class="form-outline mb-4" align="center">
     <input
+      type="date"
+      id="date"
+      name="date"
+      class="form-control"
+      [formControl]="dateCtrl"
+      placeholder="Saisir votre date de naissance :"
+    />
+  </div>
+
+  <div class="form-outline mb-4">
+    <input
       type="text"
       id="tel"
       class="form-control"
@@ -127,6 +138,19 @@
       class="alert alert-danger"
     >
       <span *ngIf="villeCtrl.hasError('required')">Ville obligatoire ! </span>
+    </div>
+  </div>
+  <div class="form-outline mb-4" align="center">
+    <input
+      type="text"
+      id="pays"
+      name="pays"
+      class="form-control"
+      [formControl]="paysCtrl"
+      placeholder="Saisir votre pays :"
+    />
+    <div *ngIf="paysCtrl.dirty && paysCtrl.invalid" class="alert alert-danger">
+      <span *ngIf="paysCtrl.hasError('required')">Pays obligatoire ! </span>
     </div>
   </div>
   <h6>Saisir vos identifiants :</h6>

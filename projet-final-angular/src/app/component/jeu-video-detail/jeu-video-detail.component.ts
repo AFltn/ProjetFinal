@@ -47,10 +47,18 @@ export class JeuVideoDetailComponent implements OnInit {
       cpt = cpt + 1;
     });
     this.jeuVideo.noteMoyenne = cpt2 / cpt;
-    return Math.round(this.jeuVideo.noteMoyenne);
+
+    if (isNaN(this.jeuVideo.noteMoyenne)) {
+      return 0;
+    } else {
+      return Math.round(this.jeuVideo.noteMoyenne);
+    }
   }
 
   note(i: number) {
-    return new Array(Math.round(i));
+    if (i > 0) {
+      return new Array(Math.round(i));
+    }
+    return new Array();
   }
 }

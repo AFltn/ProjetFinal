@@ -25,11 +25,7 @@
             <div class="col mb-5">
               <div class="card h-100">
                 <!-- Product image-->
-                <img
-                  class="card-img-top"
-                  src="https://www.zupimages.net/up/21/26/4kn7.jpg"
-                  alt="..."
-                />
+                <img class="card-img-top" src="{{ j.image }}" alt="..." />
                 <!-- Product details-->
                 <div class="card-body p-4">
                   <div class="text-center">
@@ -60,7 +56,7 @@
   </section>
   <!-- Zone test -->
   <div class="container px-4 px-lg-4 my-4">
-    <div class="text-center text-white">
+    <div class="text-center text-danger">
       <h5 class="display-6 fw-bolder">Jeux du moment!</h5>
     </div>
   </div>
@@ -75,34 +71,32 @@
           justify-content-center
         "
       >
-        <td *ngFor="let j of jeuxVideos | async">
-          <div class="col mb-5">
-            <div class="card h-100">
-              <!-- Product image-->
-              <img
-                class="card-img-top"
-                src="https://www.zupimages.net/up/21/26/4kn7.jpg"
-                alt="..."
-              />
-              <!-- Product details-->
-              <div class="card-body p-4">
-                <div class="text-center">
-                  <!-- Product name-->
-                  <h5 class="fw-bolder">{{ j.nom }}</h5>
-                  <!-- Note moyenne produit-->
-                  {{ noteMoyenne(j) }}
+        <td *ngFor="let j of jeuxVideos | async; let i = index">
+          <div *ngIf="i < 8">
+            <div class="col mb-5">
+              <div class="card h-100">
+                <!-- Product image-->
+                <img class="card-img-top" src="{{ j.image }}" alt="..." />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                  <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">{{ j.nom }}</h5>
+                    <!-- Note moyenne produit-->
+                    {{ noteMoyenne(j) }}
+                  </div>
                 </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <!-- pointer vers l'id dans le router-->
-                  <a
-                    class="btn btn-outline-dark mt-auto"
-                    [routerLink]="['/jeuxvideo']"
-                    routerLinkActive="active"
-                    >Voir plus</a
-                  >
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                  <div class="text-center">
+                    <!-- pointer vers l'id dans le router-->
+                    <a
+                      class="btn btn-outline-dark mt-auto"
+                      [routerLink]="['/jeuxvideo', j.id]"
+                      routerLinkActive="active"
+                      >Voir plus</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
