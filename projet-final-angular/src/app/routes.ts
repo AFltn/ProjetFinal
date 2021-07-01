@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import { JeuVideoDetailComponent } from './component/jeu-video-detail/jeu-video-detail.component';
-=======
 import { EditJeuxVideoComponent } from './component/edit-jeux-video/edit-jeux-video.component';
->>>>>>> Eve
 import { HomeJeuSocieteComponent } from './home-jeu-societe/home-jeu-societe.component';
 import { HomeJeuVideoComponent } from './home-jeu-video/home-jeu-video.component';
 import { PanierComponent } from './component/panier/panier.component';

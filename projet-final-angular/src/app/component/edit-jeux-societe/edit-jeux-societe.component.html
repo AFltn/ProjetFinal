@@ -50,7 +50,12 @@
   </div>
   <div class="form-group">
     <label>nombre de joueurs minimum</label>
-    <input class="form-control" [formControl]="nbJMinCtrl" />
+    <input
+      class="form-control"
+      [formControl]="nbJMinCtrl"
+      type="number"
+      name="nbJMin"
+    />
     <div
       *ngIf="nbJMinCtrl.dirty && nbJMinCtrl.invalid"
       class="alert alert-danger"
@@ -63,7 +68,12 @@
   </div>
   <div class="form-group">
     <label>nombre de joueurs maximum</label>
-    <input class="form-control" [formControl]="nbJMaxCtrl" />
+    <input
+      class="form-control"
+      [formControl]="nbJMaxCtrl"
+      type="number"
+      name="nbJMax"
+    />
     <div
       *ngIf="nbJMaxCtrl.dirty && nbJMaxCtrl.invalid"
       class="alert alert-danger"
@@ -83,6 +93,19 @@
     >
       <span *ngIf="dureeCtrl.hasError('required')">durée obligatoire</span>
       <span *ngIf="dureeCtrl.hasError('min')">doit être positif</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>image du jeu</label>
+    <input class="form-control" [formControl]="imageCtrl" type="url" />
+    <div
+      *ngIf="imageCtrl.dirty && imageCtrl.invalid"
+      class="alert alert-danger"
+    >
+      <span *ngIf="imageCtrl.hasError('required')">image obligatoire</span>
+      <span *ngIf="dureeCtrl.hasError('pattern')"
+        >doit être un lien correct</span
+      >
     </div>
   </div>
   <div class="form-group">

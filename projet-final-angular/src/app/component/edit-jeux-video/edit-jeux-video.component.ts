@@ -21,6 +21,7 @@ export class EditJeuxVideoComponent implements OnInit {
   ageCtrl: FormControl;
   nbJMinCtrl: FormControl;
   nbJMaxCtrl: FormControl;
+  imageCtrl: FormControl;
   genreCtrl: FormControl;
   supportCtrl: FormControl;
   descriptionCtrl: FormControl;
@@ -46,6 +47,10 @@ export class EditJeuxVideoComponent implements OnInit {
     ]);
     this.genreCtrl = fb.control(null, [Validators.required]);
     this.supportCtrl = fb.control(null, [Validators.required]);
+    this.imageCtrl = fb.control(null, [
+      Validators.required,
+      Validators.pattern('https://www.zupimages.net/.*.jpg'),
+    ]);
     this.form = fb.group({
       nom: this.nomCtrl,
       editeur: this.editeurCtrl,
@@ -54,6 +59,7 @@ export class EditJeuxVideoComponent implements OnInit {
       nbJoueursMin: this.nbJMinCtrl,
       nbJoueursMax: this.nbJMaxCtrl,
       description: this.descriptionCtrl,
+      image: this.imageCtrl,
 
       date: this.dateCtrl,
     });

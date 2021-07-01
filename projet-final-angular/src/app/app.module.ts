@@ -1,5 +1,3 @@
-import { MatSelectModule } from '@angular/material/select';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -57,7 +55,6 @@ import { ListAvisUtilisateurComponent } from './component/list-avis-utilisateur/
     HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

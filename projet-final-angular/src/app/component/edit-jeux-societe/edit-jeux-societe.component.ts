@@ -22,6 +22,7 @@ export class EditJeuxSocieteComponent implements OnInit {
   nbJMinCtrl: FormControl;
   nbJMaxCtrl: FormControl;
   dureeCtrl: FormControl;
+  imageCtrl: FormControl;
   genreCtrl: FormControl;
   supportCtrl: FormControl;
   descriptionCtrl: FormControl;
@@ -39,9 +40,13 @@ export class EditJeuxSocieteComponent implements OnInit {
     this.prixCtrl = fb.control(0, [Validators.required]);
     this.dateCtrl = fb.control(null, [Validators.required]);
     this.ageCtrl = fb.control(0, [Validators.required, Validators.min(0)]);
-    this.nbJMinCtrl = fb.control(0, [Validators.required, Validators.min(1)]);
-    this.nbJMaxCtrl = fb.control(0, [Validators.required, Validators.min(1)]);
+    this.nbJMinCtrl = fb.control(1, [Validators.required, Validators.min(1)]);
+    this.nbJMaxCtrl = fb.control(1, [Validators.required, Validators.min(1)]);
     this.dureeCtrl = fb.control(0, [Validators.required, Validators.min(1)]);
+    this.imageCtrl = fb.control(null, [
+      Validators.required,
+      Validators.pattern('https://www.zupimages.net/.*.jpg'),
+    ]);
     this.descriptionCtrl = fb.control('', [
       Validators.required,
       Validators.minLength(10),
@@ -53,12 +58,12 @@ export class EditJeuxSocieteComponent implements OnInit {
       editeur: this.editeurCtrl,
       prix: this.prixCtrl,
       age: this.ageCtrl,
-      nbJoueursMin: this.nbJMinCtrl,
-      nbJoueursMax: this.nbJMaxCtrl,
       duree: this.dureeCtrl,
+      image: this.imageCtrl,
       description: this.descriptionCtrl,
-
       date: this.dateCtrl,
+      nbJMin: this.nbJMinCtrl,
+      nbJMax: this.nbJMaxCtrl,
     });
   }
 
@@ -77,5 +82,6 @@ export class EditJeuxSocieteComponent implements OnInit {
     console.log(genre);
     console.log(support);
   }
+
   ngOnInit(): void {}
 }
