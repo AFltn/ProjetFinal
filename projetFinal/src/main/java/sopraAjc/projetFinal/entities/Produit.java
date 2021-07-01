@@ -16,6 +16,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -61,9 +62,9 @@ public abstract class Produit {
 	@Size(min = 2)
 	private String nom;
 
-	@Lob
+
 	@Column(name = "picture")
-	private byte[] photo;
+	private String photo;
 
 	@JsonView(Views.Common.class)
 	@Column(name = "editeur", length = 100, nullable = false)
@@ -106,6 +107,7 @@ public abstract class Produit {
 	@JsonView(Views.Common.class)
 	@Column(name = "note_Moyenne")
 	@Min(value = 0)
+	@Max(value= 5)
 	private double noteMoyenne;
 
 	//	@JsonView({ Views.CommandeWithLigneCommande.class, Views.ClientWithCommande.class })
@@ -173,13 +175,7 @@ public abstract class Produit {
 
 
 
-	public byte[] getPhoto() {
-		return photo;
-	}
 
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
-	}
 
 	public int getNbJoueursMin() {
 		return nbJoueursMin;
@@ -245,6 +241,14 @@ public abstract class Produit {
 	public void setLignesCommandes(List<LigneCommande> lignesCommandes) {
 		this.lignesCommandes = lignesCommandes;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -273,10 +277,13 @@ public abstract class Produit {
 
 	@Override
 	public String toString() {
-		return "Produit [id=" + id + ", nom=" + nom + ", photo=" + Arrays.toString(photo) + ", editeur=" + editeur
-				+ ", prix=" + prix + ", dateSortie=" + dateSortie + ", ageMin=" + ageMin + ", description="
-				+ description + ", nbJoueursMin=" + nbJoueursMin + ", nbJoueursMax=" + nbJoueursMax + ", noteMoyenne="
-				+ noteMoyenne + ", avis=" + avis + ", lignesCommandes=" + lignesCommandes + "]";
+		return "Produit [id=" + id + ", nom=" + nom + ", photo=" + photo + ", editeur=" + editeur + ", prix=" + prix
+				+ ", dateSortie=" + dateSortie + ", ageMin=" + ageMin + ", description=" + description
+				+ ", nbJoueursMin=" + nbJoueursMin + ", nbJoueursMax=" + nbJoueursMax + ", noteMoyenne=" + noteMoyenne
+				+ ", avis=" + avis + ", lignesCommandes=" + lignesCommandes + "]";
 	}
+
+
+
 
 }

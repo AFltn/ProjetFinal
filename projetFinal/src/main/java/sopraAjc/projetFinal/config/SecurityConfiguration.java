@@ -39,10 +39,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 					.antMatchers(HttpMethod.OPTIONS).anonymous()
 					.antMatchers(HttpMethod.POST,"/api/jeuxSociete").anonymous()
+				//	.antMatchers(HttpMethod.POST,"/api/client").anonymous()
+					.antMatchers(HttpMethod.GET,"/api/jeuxVideo").anonymous()
+				//	.antMatchers(HttpMethod.GET,"/api/login").authenticated()
+			
+					
 //					.antMatchers(HttpMethod.POST,"/api/client").anonymous()
 //					.antMatchers("/api","/api/**").authenticated()
 				.and()
-				.httpBasic();
+				.httpBasic()
+				.and()
+				.formLogin()
+				.loginPage("/login")
+				.defaultSuccessUrl("/")
+				.failureUrl("/login?error")
+				.permitAll()
+			.and()	
+			.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/?logout");
 //		// @formatter:on
 
 	}

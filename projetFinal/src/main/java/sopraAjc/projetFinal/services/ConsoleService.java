@@ -38,7 +38,7 @@ public class ConsoleService implements CommandLineRunner {
 //		} catch (NullPointerException e) {
 //			logger.info(e.getMessage(), e);
 //		}
-		// initUtilisateur();
+//		 initUtilisateur();
 	}
 
 	private void initUtilisateur() {
