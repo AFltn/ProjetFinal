@@ -72,6 +72,16 @@ public class ClientService {
 		}
 		return new Utilisateur();
 	}
+	
+	public Utilisateur getUser(String login) {
+		if (login != null) {
+	Optional<Utilisateur> opt = utilisateurRepository.findByLogin(login);
+				if (opt.isPresent()) {
+		return opt.get();
+	}
+}
+return new Utilisateur();
+}
 
 	public Client getById(Integer id) {
 				if (id != null) {

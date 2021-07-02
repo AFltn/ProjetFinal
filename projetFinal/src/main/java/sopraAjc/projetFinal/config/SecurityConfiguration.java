@@ -38,35 +38,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 				.authorizeRequests()
 					.antMatchers(HttpMethod.OPTIONS).anonymous()
-					.antMatchers(HttpMethod.POST,"/api/jeuxSociete").anonymous()
-				//	.antMatchers(HttpMethod.POST,"/api/client").anonymous()
-					.antMatchers(HttpMethod.GET,"/api/jeuxVideo").anonymous()
-				//	.antMatchers(HttpMethod.GET,"/api/login").authenticated()
-			
-					
-//					.antMatchers(HttpMethod.POST,"/api/client").anonymous()
-//					.antMatchers("/api","/api/**").authenticated()
+					.antMatchers(HttpMethod.GET,"/api/jeuxSociete").permitAll()
+					.antMatchers(HttpMethod.POST,"/api/client").anonymous()
+					.antMatchers(HttpMethod.GET,"/api/client").authenticated()
+					.antMatchers(HttpMethod.GET,"/api/jeuxVideo").permitAll()
 				.and()
-				.httpBasic()
-				.and()
-				.formLogin()
-				.loginPage("/login")
-				.defaultSuccessUrl("/")
-				.failureUrl("/login?error")
-				.permitAll()
-			.and()	
-			.logout()
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/?logout");
+				.httpBasic();
+
 //		// @formatter:on
 
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication().withUser("toto").password("{noop}toto").roles("ADMIN");
-//		auth.inMemoryAuthentication().withUser("lolo").password("{noop}lolo").roles("USER");
-
 		auth.userDetailsService(authService);
 	}
 

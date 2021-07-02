@@ -44,6 +44,8 @@ public interface JeuSocieteRepository extends JpaRepository<JeuSociete, Integer>
 	
 	@Query("select p from JeuSociete p left join fetch p.avis where p.id=:id")
 	Optional<JeuSociete> findByIdWithAvis(@Param("id") Integer id); 
+	
+
 
 	
 }

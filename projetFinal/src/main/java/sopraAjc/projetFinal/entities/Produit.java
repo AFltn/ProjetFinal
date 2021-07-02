@@ -62,9 +62,9 @@ public abstract class Produit {
 	@Size(min = 2)
 	private String nom;
 
-
+	@JsonView(Views.Common.class)
 	@Column(name = "picture")
-	private String photo;
+	private String image;
 
 	@JsonView(Views.Common.class)
 	@Column(name = "editeur", length = 100, nullable = false)
@@ -91,7 +91,7 @@ public abstract class Produit {
 	@JsonView(Views.Common.class)
 	@Lob
 	@Type(type = "org.hibernate.type.TextType")
-	@Column(name = "description")
+	@Column(name = "description",length = 100)
 	private String description;
 
 	@JsonView(Views.Common.class)
@@ -110,7 +110,7 @@ public abstract class Produit {
 	@Max(value= 5)
 	private double noteMoyenne;
 
-	//	@JsonView({ Views.CommandeWithLigneCommande.class, Views.ClientWithCommande.class })
+
 	
 	@JsonView(Views.ProduitWithAvis.class)
 	@OneToMany(mappedBy = "produit")
@@ -241,14 +241,16 @@ public abstract class Produit {
 	public void setLignesCommandes(List<LigneCommande> lignesCommandes) {
 		this.lignesCommandes = lignesCommandes;
 	}
-	public String getPhoto() {
-		return photo;
+
+
+
+	public String getImage() {
+		return image;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setImage(String image) {
+		this.image = image;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -277,7 +279,7 @@ public abstract class Produit {
 
 	@Override
 	public String toString() {
-		return "Produit [id=" + id + ", nom=" + nom + ", photo=" + photo + ", editeur=" + editeur + ", prix=" + prix
+		return "Produit [id=" + id + ", nom=" + nom + ", image=" + image + ", editeur=" + editeur + ", prix=" + prix
 				+ ", dateSortie=" + dateSortie + ", ageMin=" + ageMin + ", description=" + description
 				+ ", nbJoueursMin=" + nbJoueursMin + ", nbJoueursMax=" + nbJoueursMax + ", noteMoyenne=" + noteMoyenne
 				+ ", avis=" + avis + ", lignesCommandes=" + lignesCommandes + "]";

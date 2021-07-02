@@ -17,4 +17,6 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Intege
 	
 	@Query("select distinct c from Utilisateur c left join fetch c.avis")
 	List<Utilisateur> findAllWithAvis();
+	
+	
 }

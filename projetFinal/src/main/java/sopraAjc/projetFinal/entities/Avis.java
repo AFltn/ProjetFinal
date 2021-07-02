@@ -71,5 +71,7 @@ public class Avis
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
+
+	
 	
 }

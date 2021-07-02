@@ -20,7 +20,7 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 @Entity
 @Table(name = "JeuSociete")
-//@SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
+
 public class JeuSociete extends Produit{
 
 	@JsonView(Views.Common.class)
@@ -32,17 +32,19 @@ public class JeuSociete extends Produit{
 	private Set <TypeJeuSociete> genre;
 	
 	@JsonView(Views.Common.class)
-	@Column(name = "duree", length = 100, nullable = false)
-	@NotEmpty(message = "ce champ ne peut pas etre vide !")
-	private String duree;
-	
-	@JsonView(Views.Common.class)
 	@Column(name = "support", length = 100, nullable = false)
 	@NotEmpty(message = "ce champ ne peut pas etre vide !")
 	@ElementCollection(targetClass = SupportJeuSociete.class, fetch = FetchType.EAGER)
 	@CollectionTable
 	@Enumerated(EnumType.STRING)
 	private Set <SupportJeuSociete> support;
+
+	
+	@JsonView(Views.Common.class)
+	@Column(name = "duree", length = 100, nullable = false)
+	@NotEmpty(message = "ce champ ne peut pas etre vide !")
+	private String duree;
+	
 
 
 	public JeuSociete() {

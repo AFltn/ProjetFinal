@@ -42,8 +42,7 @@ public class JeuVideoRestController {
 
 	@Autowired
 	private JeuVideoService JeuVideoService;
-//	@Autowired
-//	private FournisseurService fournisseurService;
+
 
 	@GetMapping("")
 	@JsonView(Views.ProduitWithAvis.class)
@@ -51,11 +50,7 @@ public class JeuVideoRestController {
 		return getAll();
 	}
 
-//	@GetMapping("/fournisseur")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
-//	public List<JeuVideo> getAllJeuVideoWithFournisseur() {
-//		return getAll();
-//	}
+
 
 	private List<JeuVideo> getAll() {
 		return JeuVideoService.getAll();
@@ -63,7 +58,6 @@ public class JeuVideoRestController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
 	public JeuVideo create(@Valid @RequestBody JeuVideo JeuVideo, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new JeuVideoInvalidException();
@@ -83,11 +77,6 @@ public class JeuVideoRestController {
 
 	}
 
-//	@GetMapping("/{id}/fournisseur")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
-//	public JeuVideo getJeuVideoByIdWithFournisseur(@PathVariable Integer id) {
-//		return getById(id);
-//	}
 
 	private JeuVideo getById(Integer id) {
 		JeuVideo p = null;
@@ -106,7 +95,6 @@ public class JeuVideoRestController {
 	}
 
 	@PutMapping("/{id}")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
 	public JeuVideo update(@Valid @RequestBody JeuVideo JeuVideo, BindingResult br, @PathVariable Integer id) {
 		logger.trace(br.toString());
 		if (br.hasErrors()) {
@@ -126,7 +114,6 @@ public class JeuVideoRestController {
 	}
 
 	@PatchMapping("/{id}")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
 	public JeuVideo update(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
 		try {
 			System.out.println(fields);

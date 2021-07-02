@@ -7,16 +7,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import sopraAjc.projetFinal.entities.JeuVideo;
+import sopraAjc.projetFinal.entities.Avis;
+import sopraAjc.projetFinal.entities.Produit;
+import sopraAjc.projetFinal.entities.Utilisateur;
 
-public interface AvisRepository extends JpaRepository<JeuVideo, Integer> {
-	List<JeuVideo> findByNom(String nom);
+public interface AvisRepository extends JpaRepository<Avis, Integer> {
+	
+	List<Avis> findByUtilisateur(Utilisateur utilisateur);
 
-	List<JeuVideo> findByNomLike(String nom);
+//	List<Avis> findByProduit(Produit produit);
 
-	List<JeuVideo> findByNomContaining(String nom);
+//	List<Avis> findByNomContaining(String nom);
 
-	List<JeuVideo> findByNomContainingAndPrixLessThan(String no, double prix);
+//	List<Avis> findByNomContainingAndPrixLessThan(String no, double prix);
 
 
 
@@ -35,14 +38,12 @@ public interface AvisRepository extends JpaRepository<JeuVideo, Integer> {
 //	@Query("update JeuVideo p set p.fournisseur=null where p.fournisseur=:fournisseur")
 //	int setFournisseurNull(@Param("fournisseur") Fournisseur fournisseur);
 
-	@Query("select p from JeuVideo p left join fetch p.lignesCommandes where p.id=:id")
-	Optional<JeuVideo> findByIdWithLigneCommande(@Param("id") Integer id);
 
-	@Query("select distinct p from JeuVideo p left join fetch p.avis")
-	List<JeuVideo> findAllWithAvis();
+
+
 	
-	@Query("select p from JeuVideo p left join fetch p.avis where p.id=:id")
-	Optional<JeuVideo> findByIdWithAvis(@Param("id") Integer id);
+//	@Query("select p from Avis p left join fetch p.avis where p.id=:id")
+//	Optional<Avis> findByIdWithAvis(@Param("id") Integer id);
 
 	
 }

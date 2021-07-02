@@ -41,20 +41,15 @@ public class JeuSocieteRestController {
 
 	@Autowired
 	private JeuSocieteService JeuSocieteService;
-//	@Autowired
-//	private FournisseurService fournisseurService;
+
 
 	@GetMapping("")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.ProduitWithAvis.class)
 	public List<JeuSociete> getAllJeuSociete() {
 		return getAll();
 	}
 
-//	@GetMapping("/fournisseur")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
-//	public List<JeuVideo> getAllJeuVideoWithFournisseur() {
-//		return getAll();
-//	}
+
 
 	private List<JeuSociete> getAll() {
 		return JeuSocieteService.getAll();
@@ -62,7 +57,6 @@ public class JeuSocieteRestController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("")
-//	@JsonView(Views.JeuSocieteWithFournisseur.class)
 	public JeuSociete create(@Valid @RequestBody JeuSociete JeuSociete, BindingResult br) {
 		System.out.println("js :" + br);
 		if (br.hasErrors()) {
@@ -77,17 +71,12 @@ public class JeuSocieteRestController {
 	}
 
 	@GetMapping("{id}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.ProduitWithAvis.class)
 	public JeuSociete getJeuSocieteById(@PathVariable Integer id) {
 		return getById(id);
 
 	}
 
-//	@GetMapping("/{id}/fournisseur")
-//	@JsonView(Views.JeuSocieteWithFournisseur.class)
-//	public JeuVideo getJeuSocieteByIdWithFournisseur(@PathVariable Integer id) {
-//		return getById(id);
-//	}
 
 	private JeuSociete getById(Integer id) {
 		JeuSociete p = null;
@@ -106,7 +95,6 @@ public class JeuSocieteRestController {
 	}
 
 	@PutMapping("/{id}")
-//	@JsonView(Views.JeuVideoWithFournisseur.class)
 	public JeuSociete update(@Valid @RequestBody JeuSociete JeuSociete, BindingResult br, @PathVariable Integer id) {
 		logger.trace(br.toString());
 		if (br.hasErrors()) {
@@ -126,7 +114,6 @@ public class JeuSocieteRestController {
 	}
 
 	@PatchMapping("/{id}")
-//	@JsonView(Views.JeuSocieteWithFournisseur.class)
 	public JeuSociete update(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
 		try {
 			System.out.println(fields);

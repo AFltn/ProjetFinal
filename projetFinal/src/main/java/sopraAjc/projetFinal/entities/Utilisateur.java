@@ -46,6 +46,8 @@ public class Utilisateur {
 	@Column(name = "role", length = 50)
 	private Role role;
 	
+	
+	
 	@JsonView(Views.ClientWithAvis.class)
 	@OneToMany(mappedBy = "utilisateur")
 	private List<Avis> avis;
@@ -56,6 +58,17 @@ public class Utilisateur {
 	public Utilisateur() {
 
 	}
+
+	
+	public List<Avis> getAvis() {
+		return avis;
+	}
+
+
+	public void setAvis(List<Avis> avis) {
+		this.avis = avis;
+	}
+
 
 	public Integer getId() {
 		return id;
@@ -121,5 +134,9 @@ public class Utilisateur {
 			return false;
 		return true;
 	}
+
+
+
+	
 
 }

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
@@ -26,11 +27,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopraAjc.projetFinal.config.UtilisateurSpring;
 import sopraAjc.projetFinal.entities.Client;
 import sopraAjc.projetFinal.entities.Utilisateur;
 import sopraAjc.projetFinal.entities.views.Views;
 import sopraAjc.projetFinal.exceptions.ClientException;
 import sopraAjc.projetFinal.exceptions.rest.ClientInvalidException;
+import sopraAjc.projetFinal.repositories.AvisRepository;
 import sopraAjc.projetFinal.services.ClientService;
 
 @RestController
@@ -41,7 +44,10 @@ public class ClientRestController {
 	@Autowired
 	private ClientService clientService;
 	@Autowired
+	private AvisRepository avisRepo;
+	@Autowired
 	private PasswordEncoder passwordEncoder;
+
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
@@ -64,11 +70,32 @@ public class ClientRestController {
 	public Client getClientById(@PathVariable Integer id) {
 		return getById(id);
 	}
-
+	
 	@GetMapping("/{id}/avis")
+    @JsonView(Views.ClientWithAvis.class)
+    public Utilisateur getAvisByIdUser(@PathVariable Integer id) {
+                return findByIdWithAvis(id);
+    }
+	
+	@GetMapping("/user/{login}")
+    @JsonView(Views.ClientWithAvis.class)
+    public Utilisateur getUser(@PathVariable String login) {
+		return findUser(login);
+    }
+
+	private Utilisateur findUser( String login) {
+		Utilisateur user = clientService.getUser(login);
+		return user;
+	}
+	
+	//liste les avis d'un utilisateur
+	@GetMapping("/listeAvis")
 	@JsonView(Views.ClientWithAvis.class)
-	public Utilisateur getAvisByIdUser(@PathVariable Integer id) {
-				return findByIdWithAvis(id);
+	public Utilisateur getAvisByUser(@AuthenticationPrincipal UtilisateurSpring utilisateurSpring ) {
+	
+		        Utilisateur utilisateur = utilisateurSpring.getUtilisateur();
+		        utilisateur.setAvis(avisRepo.findByUtilisateur(utilisateur));
+		        return utilisateur;
 	}
 	
 	private Utilisateur findByIdWithAvis(Integer id) {
@@ -82,6 +109,7 @@ public class ClientRestController {
 		return getById(id);
 	}
 
+	//affiche tous les utilisateurs et leurs avis
 	@GetMapping("/avis")
 	@JsonView(Views.ClientWithAvis.class)
 	public List<Utilisateur> getAllAvisWithUser(Integer id) {

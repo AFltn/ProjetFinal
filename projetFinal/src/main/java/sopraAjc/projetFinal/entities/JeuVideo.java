@@ -18,12 +18,12 @@ import sopraAjc.projetFinal.entities.views.Views;
 
 @Entity
 @Table(name = "JeuVideo")
-//@SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
+
 public class JeuVideo extends Produit{
 
 	@JsonView(Views.Common.class)
 	@Column(name = "genre", length = 100, nullable = false)
-//	@NotEmpty(message = "ce champ ne peut pas etre vide !")
+	@NotEmpty(message = "ce champ ne peut pas etre vide !")
 	@ElementCollection(targetClass = TypeJeuVideo.class, fetch = FetchType.EAGER)
 	@CollectionTable
 	@Enumerated(EnumType.STRING)
